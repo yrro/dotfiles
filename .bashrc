@@ -62,24 +62,6 @@ xterm*|rxvt*|screen)
 	;;
 esac
 
-# copy rc files to specified host
-function cprc {
-	if test -z "$1"
-	then
-		echo "Usage: cprc hostname"
-	else
-		#scp ~/.vimrc ~/.bash_profile ~/.bashrc ~/.inputrc ~/.screenrc ~/.toprc "$1":
-		sftp -b - "$1" <<-EOF
-			put $HOME/.vimrc
-			put $HOME/.bash_profile
-			put $HOME/.bashrc
-			put $HOME/.inputrc
-			put $HOME/.screenrc
-			put $HOME/.toprc
-		EOF
-	fi
-}
-
 function gvimcpp {
 	gvim $1.cpp "+new $1.h"
 }
