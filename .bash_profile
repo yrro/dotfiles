@@ -1,5 +1,3 @@
-# Version 20080209
-
 # .bash_profile is sourced for a login shell.
 # my .gnomerc sources it, so place in here 'session' type configuration.
 # 

@@ -1,5 +1,3 @@
-" version 20070507
-
 "behave mswin
 "source $VIMRUNTIME/mswin.vim
 

@@ -1,5 +1,3 @@
-# Version 20080209
-
 # .bashrc is sourced for an interactive shell.
 
 #echo .bashrc
