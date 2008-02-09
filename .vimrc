@@ -26,8 +26,7 @@ set showcmd
 " display possible choices when tab completing
 set wildmenu
 
-"set tabstop=4
-set shiftwidth=4
+"set shiftwidth=4
 set softtabstop=4
 
 set autoindent
@@ -50,11 +49,14 @@ set display+=lastline
 autocmd FileType mail setlocal spell spelllang=en_gb  
 autocmd FileType debchangelog setlocal expandtab
 
+" don't use tabs in python files
 autocmd FileType python setlocal expandtab
-autocmd FileType python setlocal softtabstop=4
 
 autocmd filetypedetect BufNewFile,BufRead COMMIT_EDITMSG set ft=gitcommit
-autocmd filetypedetect BufNewFile,BufRead *.as           set ft=actionscript
+
+" actionscript, not atlas
+autocmd! filetypedetect BufNewFile,BufRead *.as
+autocmd  filetypedetect BufNewFile,BufRead *.as set ft=actionscript
 
 set pastetoggle=<F10>
 
@@ -71,16 +73,17 @@ set pastetoggle=<F10>
 
 filetype indent on
 
+" disable syntax highlighting in diff mode
 if &diff
 	"set columns=151
 	"map :q :qa
 	syn off
 endif
 
+" automatically load the GUI when run under X11
 if $DISPLAY != ''
 	gui
 endif
 
-"␍
 "set listchars=eol:␤,tab:␉\ ,trail:␠,extends:>,precedes:<,nbsp:␠
 "set list
