@@ -1,0 +1,11 @@
+# 1: windows up to current
+# 2: current window
+# 3: windows past current
+#               1111111122222222223333333
+caption always "%{bw}%-w%{BW}%n %t%{-}%+w"
+#caption always "%{bw}%w"
+
+defscrollback 1000
+startup_message off
+
+#termcapinfo xterm|xterms|xs|rxvt ti@:te@

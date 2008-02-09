@@ -1,0 +1,25 @@
+# See readline(3readline) and `info rluserman' for more information.
+
+set match-hidden-files off
+set bell-style visible
+set blink-matching-paren on
+set bind-tty-special-chars on
+#set horizontal-scroll-mode on
+#set show-all-if-ambiguous on
+
+# insert
+"\e[2~": overwrite-mode
+
+# pgup
+"\e[5~": history-search-backward
+
+# pgdn
+"\e[6~": history-search-forward
+
+# ctrl+delete
+"\e[3;5~": kill-word
+
+#"": backward-kill-word
+#"\e?": backward-kill-word
+#control-DEL: backward-kill-word
+#"\C-DEL": backward-kill-word
