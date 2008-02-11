@@ -87,3 +87,7 @@ endif
 
 "set listchars=eol:␤,tab:␉\ ,trail:␠,extends:>,precedes:<,nbsp:␠
 "set list
+
+if &term =~ "screen"
+	set ttymouse=xterm2
+endif
