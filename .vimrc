@@ -26,7 +26,7 @@ set showcmd
 " display possible choices when tab completing
 set wildmenu
 
-"set shiftwidth=4
+set shiftwidth=4
 set softtabstop=4
 
 set autoindent
@@ -51,6 +51,7 @@ autocmd FileType debchangelog setlocal expandtab
 
 " don't use tabs in python files
 autocmd FileType python setlocal expandtab
+autocmd FileType python source ~/.vim/python.vim
 
 autocmd filetypedetect BufNewFile,BufRead COMMIT_EDITMSG set ft=gitcommit
 
