@@ -88,3 +88,9 @@ endif
 
 "set listchars=eol:␤,tab:␉\ ,trail:␠,extends:>,precedes:<,nbsp:␠
 "set list
+
+"autocmd BufWritePost,FileWritePost /home/sam/src/occ/data/occ.py silent !ln -sf <afile>:p ~/.openoffice.org2/user/Scripts/python/occ.py
+
+if &term =~ "screen"
+	set ttymouse=xterm2
+endif

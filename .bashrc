@@ -42,13 +42,20 @@ function smile {
 		echo -ne "${csi_red}:("
 	fi
 }
+function user_colour {
+	if test "$UID" = 0; then
+		echo -ne "${csi_red}"
+	else
+		echo -ne "${csi_green}"
+	fi
+}
 csi='\e['
 csi_default=${csi}0m
 csi_cyan=${csi}36m
 csi_green=${csi}32m
 csi_red=${csi}31m
 csi_gold=${csi}33m
-PS1="\n\$(smile) ${csi_cyan}\A ${csi_green}\u@\h ${csi_gold}\w${csi_default} \n\\$ "
+PS1="\n\$(smile) ${csi_cyan}\A $(user_colour)\u@\h ${csi_gold}\w${csi_default} \n\\$ "
 
 HISTCONTROL=ignoreboth
 HISTSIZE=5000
@@ -61,24 +68,6 @@ xterm*|rxvt*|screen)
 	# ESC]2;{string}BELL
 	;;
 esac
-
-# copy rc files to specified host
-function cprc {
-	if test -z "$1"
-	then
-		echo "Usage: cprc hostname"
-	else
-		#scp ~/.vimrc ~/.bash_profile ~/.bashrc ~/.inputrc ~/.screenrc ~/.toprc "$1":
-		sftp -b - "$1" <<-EOF
-			put $HOME/.vimrc
-			put $HOME/.bash_profile
-			put $HOME/.bashrc
-			put $HOME/.inputrc
-			put $HOME/.screenrc
-			put $HOME/.toprc
-		EOF
-	fi
-}
 
 function gvimcpp {
 	gvim $1.cpp "+new $1.h"
