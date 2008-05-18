@@ -25,7 +25,7 @@ export LESS_TERMCAP_ue=$'\E[0m' # end underline
 
 case $HOSTNAME in
 albion)
-	eval $(ssh-agent)
+	#eval $(ssh-agent)
 	;;
 esac
 
