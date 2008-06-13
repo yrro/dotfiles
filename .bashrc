@@ -11,7 +11,10 @@ tty --silent || return
 # by pressing C-s
 stty -ixon
 
+shopt -s cdspell
 shopt -s failglob
+shopt -s histverify
+shopt -s no_empty_cmd_completion
 
 export GREP_OPTIONS='--color=auto'
 
