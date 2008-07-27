@@ -8,4 +8,6 @@ caption always "%{bw}%-w%{BW}%n %t%{-}%+w"
 defscrollback 1000
 startup_message off
 
+term xterm
+
 #termcapinfo xterm|xterms|xs|rxvt ti@:te@
