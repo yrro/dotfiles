@@ -122,6 +122,14 @@ function svngrep {
 	find -name '.svn' -prune -or -print0 | xargs -0 grep "$@"
 }
 
+function debskew {
+	apt-cache showsrc "$1" \
+		| grep-dctrl . --show=binary -n \
+		| tr ', ' '\n' \
+		| sort -u \
+		| xargs dpkg -l
+}
+
 #test -r /etc/bash_completion && source /etc/bash_completion
 
 alias apt='aptitude'
