@@ -1,6 +1,3 @@
-"behave mswin
-"source $VIMRUNTIME/mswin.vim
-
 " display filename and path in window title
 set title
 
