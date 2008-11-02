@@ -94,7 +94,7 @@ function envof {
 	file=/proc/${1:?Usage: $0 pid}/environ
 	cmd="cat $file"
 	test -r $file || cmd="sudo $cmd"
-	$cmd | tr '\0' '\n'
+	$cmd | tr '\0' '\n' | cat -v
 }
 
 function physize {
