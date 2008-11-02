@@ -94,7 +94,7 @@ function envof {
 	file=/proc/${1:?Usage: $0 pid}/environ
 	cmd="cat $file"
 	test -r $file || cmd="sudo $cmd"
-	$cmd | tr '\0' '\n'
+	$cmd | tr '\0' '\n' | cat -v
 }
 
 function physize {
@@ -122,6 +122,18 @@ function svngrep {
 	find -name '.svn' -prune -or -print0 | xargs -0 grep "$@"
 }
 
+function debskew {
+	apt-cache showsrc "$1" \
+		| grep-dctrl . --show=binary -n \
+		| tr ', ' '\n' \
+		| sort -u \
+		| xargs dpkg -l
+}
+
+function rb {
+	env $(envof $(pgrep rhythmbox) | grep ^DBUS_SESSION_BUS_ADDRESS=) rhythmbox-client "$@"
+}
+
 #test -r /etc/bash_completion && source /etc/bash_completion
 
 alias apt='aptitude'
@@ -136,7 +148,7 @@ alias ll='ls -lh'
 alias ls='ls --color=auto'
 alias massif='valgrind --tool=massif --depth=5 --alloc-fn={g_malloc,g_realloc,g_try_malloc,g_malloc0,g_mem_chunk_alloc}'
 alias mysql='mysql --pager'
-alias open='gnome-open'
+alias open='gvfs-open'
 alias pol='apt-cache policy'
 alias rm='rm --preserve-root'
 alias wgoat='wget'

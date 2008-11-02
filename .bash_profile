@@ -10,6 +10,8 @@ export PATH=$PATH:$HOME/bin
 
 #export SDL_AUDIODRIVER=alsa
 
+export PYTHONSTARTUP=~/.pythonrc
+
 export DEBEMAIL="sam@robots.org.uk"
 export DARCS_EMAIL="Sam Morris <sam@robots.org.uk>"
 export BZR_EMAIL="sam@robots.org.uk"

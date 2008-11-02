@@ -23,3 +23,7 @@ set bind-tty-special-chars on
 #"\e?": backward-kill-word
 #control-DEL: backward-kill-word
 #"\C-DEL": backward-kill-word
+
+# why doesnt this work from /etc/inputrc?
+"\e[1;5C": forward-word
+"\e[1;5D": backward-word

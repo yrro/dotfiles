@@ -1,6 +1,3 @@
-"behave mswin
-"source $VIMRUNTIME/mswin.vim
-
 " display filename and path in window title
 set title
 
@@ -51,7 +48,10 @@ autocmd FileType debchangelog setlocal expandtab
 
 " don't use tabs in python files
 autocmd FileType python setlocal expandtab
-autocmd FileType python source ~/.vim/python.vim
+
+if filereadable ("~/.vim/python.vim")
+    autocmd FileType python source ~/.vim/python.vim
+endif
 
 autocmd filetypedetect BufNewFile,BufRead COMMIT_EDITMSG set ft=gitcommit
 
