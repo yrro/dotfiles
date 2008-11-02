@@ -130,6 +130,10 @@ function debskew {
 		| xargs dpkg -l
 }
 
+function rb {
+	env $(envof $(pgrep rhythmbox) | grep ^DBUS_SESSION_BUS_ADDRESS=) rhythmbox-client "$@"
+}
+
 #test -r /etc/bash_completion && source /etc/bash_completion
 
 alias apt='aptitude'
