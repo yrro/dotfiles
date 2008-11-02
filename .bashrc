@@ -144,6 +144,9 @@ alias whois='whois -H'
 alias xse='tail --follow=name ~/.xsession-errors -n 0'
 
 case $HOSTNAME in
+durandal)
+	alias nogba='wine ~/nogba/NO\$GBA.EXE'
+	;;
 xerces)
 	alias hdsleep='sudo hdparm -y /dev/hd[acdef]'
 	#alias update-menus='update-menus --nodefaultdirs --menufilesdir ~/.menu/'
