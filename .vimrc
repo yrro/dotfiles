@@ -43,7 +43,9 @@ set guifont=Monospace\ 8
 
 set display+=lastline
 
-autocmd FileType mail setlocal spell spelllang=en_gb  
+set spelllang=en_gb
+
+autocmd FileType mail setlocal spell
 autocmd FileType debchangelog setlocal expandtab
 
 " don't use tabs in python files
