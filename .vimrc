@@ -6,6 +6,9 @@ set mouse=a
 " make mouse behave like mac/windows/gnome
 set mousemodel=popup_setpos
 
+set splitbelow
+set splitright
+
 " hilight search results
 set hlsearch
 " incremental search
