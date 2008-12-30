@@ -137,6 +137,7 @@ function rb {
 #test -r /etc/bash_completion && source /etc/bash_completion
 
 alias apt='aptitude'
+alias dig='dig +multi'
 alias dquilt='QUILT_PATCHES=debian/patches quilt'
 alias dux='du -xm --max-depth=1'
 alias e="$EDITOR"
@@ -151,6 +152,7 @@ alias mysql='mysql --pager'
 alias open='gvfs-open'
 alias pol='apt-cache policy'
 alias rm='rm --preserve-root'
+alias units='units --verbose'
 alias wgoat='wget'
 alias whois='whois -H'
 alias xse='tail --follow=name ~/.xsession-errors -n 0'
