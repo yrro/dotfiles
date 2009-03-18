@@ -67,7 +67,7 @@ HISTSIZE=5000
 #
 case "$TERM" in
 xterm*|rxvt*|screen)
-	PROMPT_COMMAND='echo -ne "\e]2;${HOSTNAME}:${PWD/#$HOME/~}\a"'
+	PROMPT_COMMAND='echo -ne "\e]2;${HOSTNAME}:${PWD/#$HOME/~}\a"; echo -ne "\e]1;${HOSTNAME}:${PWD/#$HOME/~}\a"'
 	# ESC]2;{string}BELL
 	;;
 esac
