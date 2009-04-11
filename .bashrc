@@ -119,7 +119,7 @@ function batchfg {
 #}
 
 function svngrep {
-	find -name '.svn' -prune -or -print0 | xargs -0 grep "$@"
+	find -name '.svn' -prune -or -exec grep "$@" {} +
 }
 
 function debskew {
