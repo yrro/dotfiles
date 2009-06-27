@@ -127,7 +127,7 @@ function debskew {
 		| grep-dctrl . --show=binary -n \
 		| tr ', ' '\n' \
 		| sort -u \
-		| xargs dpkg -l
+		| xargs -r dpkg -l
 }
 
 function rb {
