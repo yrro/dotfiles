@@ -10,7 +10,7 @@ export PATH=$PATH:$HOME/bin
 
 #export SDL_AUDIODRIVER=alsa
 
-export PYTHONSTARTUP=~/.pythonrc
+test -f ~/.pythonrc && export PYTHONSTARTUP=~/.pythonrc
 
 export DEBEMAIL="sam@robots.org.uk"
 export DARCS_EMAIL="Sam Morris <sam@robots.org.uk>"
