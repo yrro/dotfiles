@@ -1,0 +1,5 @@
+# set -x
+
+. ~/.bash_profile
+
+# vim: ft=sh
