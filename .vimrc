@@ -87,7 +87,7 @@ if &diff
 endif
 
 " automatically load the GUI when run under X11
-if $DISPLAY != ''
+if has('gui') && $DISPLAY != ''
 	gui
 endif
 
