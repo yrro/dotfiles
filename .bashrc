@@ -18,15 +18,15 @@ shopt -s no_empty_cmd_completion
 
 export GREP_OPTIONS='--color=auto'
 
+export EDITOR=vim
+
 if test -n "$DISPLAY"
 then
-	EDITOR=gvim
 	BROWSER=gnome-open
 else
-	EDITOR=vim
 	BROWSER=w3m
 fi
-export EDITOR BROWSER
+export BROWSER
 
 export MANHTMLPAGER=$BROWSER
 
