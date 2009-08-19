@@ -33,6 +33,14 @@ export MANHTMLPAGER=$BROWSER
 export PAGER=less
 export LESS='-icR'
 command -v lesspipe &>/dev/null && eval "$(lesspipe)"
+# see termcap(5) for an explanation of these codes
+#export LESS_TERMCAP_mb='\033[01;31m' # start blink
+export LESS_TERMCAP_md=$'\E[01;31m' # start bold
+export LESS_TERMCAP_me=$'\E[0m' # back to normal
+export LESS_TERMCAP_so=$'\E[01;44;33m' # start standout (status line)
+export LESS_TERMCAP_se=$'\E[0m' # end standout
+export LESS_TERMCAP_us=$'\E[01;32m' # start underline
+export LESS_TERMCAP_ue=$'\E[0m' # end underline
 
 command -v dircolors &>/dev/null && eval "$(dircolors)"
 
