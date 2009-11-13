@@ -176,7 +176,3 @@ xerces)
 	#alias update-menus='update-menus --nodefaultdirs --menufilesdir ~/.menu/'
 	;;
 esac
-
-if test -f /etc/bash_command_not_found; then
-    source /etc/bash_command_not_found
-fi
