@@ -44,6 +44,8 @@ export LESS_TERMCAP_ue=$'\E[0m' # end underline
 
 command -v dircolors &>/dev/null && eval "$(dircolors)"
 
+test -f /etc/bash_completion.d/git && source /etc/bash_completion.d/git
+
 # best prompt ever!
 #
 function smile {
@@ -66,7 +68,8 @@ csi_cyan=${csi}36m
 csi_green=${csi}32m
 csi_red=${csi}31m
 csi_gold=${csi}33m
-PS1="\n\$(smile) ${csi_cyan}\A $(user_colour)\u@\h ${csi_gold}\w${csi_default} \n\\$ "
+GIT_PS1_SHOWDIRTYSTATE=1
+PS1="\n\$(smile) ${csi_cyan}\A $(user_colour)\u@\h ${csi_gold}\w${csi_default} \$(__git_ps1 '(%s)')\n\\$ "
 
 HISTCONTROL=ignoreboth
 HISTSIZE=5000
