@@ -148,6 +148,7 @@ function rb {
 #test -r /etc/bash_completion && source /etc/bash_completion
 
 alias apt='aptitude'
+alias cgrep='grep --color --context=9999999'
 alias dig='dig +multi'
 alias dquilt='QUILT_PATCHES=debian/patches quilt'
 alias dux='du -xm --max-depth=1'
