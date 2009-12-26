@@ -9,6 +9,8 @@ export DEBEMAIL="sam@robots.org.uk"
 export DARCS_EMAIL="Sam Morris <sam@robots.org.uk>"
 export PATH=$PATH:$HOME/bin
 
+test -n "$LANG" && export LANG="en_GB.utf8"
+
 test -f ~/.pythonrc && export PYTHONSTARTUP=~/.pythonrc
 
 # Source .bashrc if this is an interactive shell
