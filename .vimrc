@@ -43,7 +43,14 @@ syntax on
 set guioptions-=T
 set guioptions-=t
 set guioptions+=f
-set guifont=Monospace\ 8
+
+if has("win32")
+    set guifont=DejaVu_Sans_Mono:h9
+else
+    set guifont=Monospace\ 8
+endif
+
+set guifont=DejaVu_Sans_Mono:h9
 
 set display+=lastline
 
