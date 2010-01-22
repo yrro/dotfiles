@@ -1,6 +1,10 @@
 " display filename and path in window title
 set title
 
+" taken from debian.vim
+set nocompatible
+set backspace=indent,eol,start
+
 " enable mouse in all modes
 set mouse=a
 " make mouse behave like mac/windows/gnome
