@@ -51,7 +51,7 @@ set guioptions+=f
 if has("win32")
     set guifont=DejaVu_Sans_Mono:h9
 else
-    set guifont=Monospace\ 8
+    set guifont=Monospace\ 9
 endif
 
 set display+=lastline
