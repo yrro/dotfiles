@@ -54,8 +54,6 @@ else
     set guifont=Monospace\ 8
 endif
 
-set guifont=DejaVu_Sans_Mono:h9
-
 set display+=lastline
 
 set spelllang=en_gb
