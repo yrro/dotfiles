@@ -1,5 +1,5 @@
 set prompt \n(gdb) 
-set height 0
+set pagination off
 #handle SIG32 nostop print pass
 
 set print array on
