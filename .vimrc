@@ -24,6 +24,12 @@ set showmatch
 " always display status line
 set laststatus=2
 
+" emulate default status line; add git branch info
+let g:git_branch_status_head_current=1
+let g:git_branch_status_text=''
+let g:git_branch_status_nogit=''
+set statusline=%<%f\ %{GitBranchInfoString()}\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+
 " show partial command in status line
 set showcmd
 
