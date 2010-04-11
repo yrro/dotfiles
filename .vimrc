@@ -25,6 +25,7 @@ set showmatch
 set laststatus=2
 
 " emulate default status line; add git branch info
+" requires addon from http://github.com/taq/vim-git-branch-info
 let g:git_branch_status_head_current=1
 let g:git_branch_status_text=''
 let g:git_branch_status_nogit=''
