@@ -73,7 +73,7 @@ csi_green=${csi}32m
 csi_red=${csi}31m
 csi_gold=${csi}33m
 GIT_PS1_SHOWDIRTYSTATE=1
-PS1="\n\$(smile) ${csi_cyan}\A $(user_colour)\u@\h ${csi_gold}\w${csi_default} \$(__git_ps1 '(%s)')\n\\$ "
+PS1="\n\$(smile) ${csi_cyan}\A $(user_colour)\u@\h ${csi_gold}\w${csi_default} \$(type -t __git_ps1 >/dev/null && __git_ps1 '(%s)')\n\\$ "
 
 HISTCONTROL=ignoreboth
 HISTSIZE=5000
