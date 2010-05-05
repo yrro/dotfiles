@@ -149,6 +149,10 @@ function rb {
 	env $(envof $(pgrep rhythmbox) | grep ^DBUS_SESSION_BUS_ADDRESS=) rhythmbox-client "$@"
 }
 
+function exaudio {
+	ffmpeg -i "$1" -acodec copy -vn "$2"
+    }
+
 #test -r /etc/bash_completion && source /etc/bash_completion
 
 alias apt='aptitude'
