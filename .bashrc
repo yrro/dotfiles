@@ -46,7 +46,7 @@ export LESS_TERMCAP_se=$'\E[0m' # end standout
 export LESS_TERMCAP_us=$'\E[0;32m' # start underline
 export LESS_TERMCAP_ue=$'\E[0m' # end underline
 
-command -v dircolors >/dev/null && eval "$(dircolors)"
+command -v dircolors >/dev/null && eval "$(dircolors -b)"
 
 test -f /etc/bash_completion.d/git && source /etc/bash_completion.d/git
 
