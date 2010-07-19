@@ -159,6 +159,7 @@ alias apt='aptitude'
 alias cgrep='grep --color --context=9999999'
 alias dig='dig +multi'
 alias dquilt='QUILT_PATCHES=debian/patches quilt'
+alias dstat='dstat --bw'
 alias dux='du -xm --max-depth=1'
 alias e="$EDITOR"
 alias g=git
