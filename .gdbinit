@@ -13,4 +13,8 @@ if os.path.exists ('/home/sam/src/gdb/python'):
 	sys.path.insert (0, '/home/sam/src/gdb/python')
 	from libstdcxx.v6.printers import register_libstdcxx_printers
 	register_libstdcxx_printers (None)
+if os.path.exists ('/home/sam/src/gdb/boost'):
+	sys.path.insert (0, '/home/sam/src/gdb/boost')
+	from boost_printers import register_boost_printers
+	register_boost_printers (None)
 end
