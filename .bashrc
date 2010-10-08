@@ -14,7 +14,7 @@ fi
 command -v stty >/dev/null && stty -ixon
 
 shopt -s cdspell
-shopt -s failglob
+#shopt -s failglob
 shopt -s histverify
 shopt -s no_empty_cmd_completion
 
