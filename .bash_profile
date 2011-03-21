@@ -13,8 +13,8 @@ test -n "$LANG" && export LANG="en_GB.utf8"
 
 test -f ~/.pythonrc && export PYTHONSTARTUP=~/.pythonrc
 
-case "$(uname -o)" in
-Cygwin)
+case "$(uname -s)" in
+CYGWIN_*)
 	# Received wisdom from Cygwin's default .bashrc
 	unset TMP
 	unset TEMP
