@@ -19,6 +19,9 @@ CYGWIN_*)
 	unset TMP
 	unset TEMP
 	;;
+Darwin)
+	export CLICOLOR=1
+	;;
 esac
 
 # Source .bashrc if this is an interactive shell
