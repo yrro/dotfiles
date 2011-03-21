@@ -54,19 +54,19 @@ test -f /etc/bash_completion.d/git && source /etc/bash_completion.d/git
 #
 function smile {
 	if test $? = 0; then
-		echo -ne "${csi_green}:)"
+		printf "${csi_green}:)"
 	else
-		echo -ne "${csi_red}:("
+		printf "${csi_red}:("
 	fi
 }
 function user_colour {
 	if test "$UID" = 0; then
-		echo -ne "${csi_red}"
+		printf "${csi_red}"
 	else
-		echo -ne "${csi_green}"
+		printf "${csi_green}"
 	fi
 }
-csi='\e['
+csi='\033['
 csi_default=${csi}0m
 csi_cyan=${csi}36m
 csi_green=${csi}32m
@@ -82,7 +82,7 @@ HISTSIZE=5000
 #
 case "$TERM" in
 xterm*|rxvt*|screen)
-	PROMPT_COMMAND='echo -ne "\e]2;${HOSTNAME}:${PWD/#$HOME/~}\a"; echo -ne "\e]1;${HOSTNAME}:${PWD/#$HOME/~}\a"'
+	PROMPT_COMMAND='printf "\033]2;${HOSTNAME}:${PWD/#$HOME/~}\a"; printf "\033]1;${HOSTNAME}:${PWD/#$HOME/~}\a"'
 	# ESC]2;{string}BELL
 	;;
 esac
