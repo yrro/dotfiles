@@ -82,8 +82,8 @@ HISTSIZE=5000
 #
 case "$TERM" in
 xterm*|rxvt*|screen)
-	PROMPT_COMMAND='printf "\033]2;${HOSTNAME}:${PWD/#$HOME/~}\a"; printf "\033]1;${HOSTNAME}:${PWD/#$HOME/~}\a"'
-	# ESC]2;{string}BELL
+	# http://www.faqs.org/docs/Linux-mini/Xterm-Title.html#ss3.1
+	PROMPT_COMMAND='printf "\033]0;${HOSTNAME}:${PWD/#$HOME/~}\a"'
 	;;
 esac
 
