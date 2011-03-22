@@ -164,7 +164,7 @@ alias dux='du -xm --max-depth=1'
 alias e="$EDITOR"
 alias g=git
 alias gdb='gdb -silent'
-alias hman='BROWSER="epiphany -p" man -H'
+alias hman='man --html=browser-pause'
 #alias gnutls-cli="gnutls-cli --x509cafile /etc/ssl/certs/ca-certificates.crt"
 alias la='ls -A'
 alias ll='ls -lh'
