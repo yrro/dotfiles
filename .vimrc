@@ -24,6 +24,9 @@ set showmatch
 " always display status line
 set laststatus=2
 
+" highlight current line
+set cursorline
+
 " emulate default status line; add git branch info
 " requires addon from http://github.com/taq/vim-git-branch-info
 let g:git_branch_status_head_current=1
