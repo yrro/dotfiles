@@ -39,10 +39,10 @@ set showcmd
 " display possible choices when tab completing
 set wildmenu
 
-set shiftwidth=4
-set softtabstop=4
+"set shiftwidth=4
+"set softtabstop=4
 
-set autoindent
+"set autoindent
 
 set nowrap
 set linebreak
