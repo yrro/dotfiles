@@ -29,6 +29,9 @@ leela)
 lysander)
 	export PATH="$PATH:/home/sam/src/ccpc/win32-3/ogre/install/bin/RelWithDebInfo:/c/Python27:/home/sam/src/ccpc/win32-3/mingw-w64/mingw-w32-1.0-bin_i686-mingw_20100702/bin"
 	;;
+jeffry.local)
+	export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+	;;
 esac
 
 # Source .bashrc if this is an interactive shell
