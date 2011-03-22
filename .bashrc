@@ -154,7 +154,6 @@ function exaudio {
 #test -r /etc/bash_completion && source /etc/bash_completion
 
 alias apt='aptitude'
-alias cgrep='grep --color --context=9999999'
 alias dig='dig +multi'
 alias dquilt='QUILT_PATCHES=debian/patches quilt'
 alias dstat='dstat --bw'
@@ -166,7 +165,6 @@ alias hman='BROWSER="epiphany -p" man -H'
 #alias gnutls-cli="gnutls-cli --x509cafile /etc/ssl/certs/ca-certificates.crt"
 alias la='ls -A'
 alias ll='ls -lh'
-alias ls='ls --color=auto'
 alias massif='valgrind --tool=massif --depth=5 --alloc-fn={g_malloc,g_realloc,g_try_malloc,g_malloc0,g_mem_chunk_alloc}'
 alias mysql='mysql --pager'
 alias open='gvfs-open'
@@ -178,6 +176,11 @@ alias units='units --verbose'
 alias wgoat='wget'
 alias whois='whois -H'
 alias xse='tail --follow=name ~/.xsession-errors -n 0'
+
+if test -z "$CLICOLOR"; then
+	alias cgrep='grep --color --context=9999999'
+	alias ls='ls --color=auto'
+fi
 
 case $HOSTNAME in
 durandal)
