@@ -163,7 +163,6 @@ alias dstat='dstat --bw'
 alias dux='du -xm --max-depth=1'
 alias e="$EDITOR"
 alias g=git
-#alias gdb='LD_LIBRARY_PATH=/usr/lib/debug gdb -silent'
 alias gdb='gdb -silent'
 #alias gnutls-cli="gnutls-cli --x509cafile /etc/ssl/certs/ca-certificates.crt"
 alias la='ls -A'
