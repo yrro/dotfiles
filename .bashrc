@@ -170,7 +170,6 @@ alias la='ls -A'
 alias ll='ls -lh'
 alias massif='valgrind --tool=massif --depth=5 --alloc-fn={g_malloc,g_realloc,g_try_malloc,g_malloc0,g_mem_chunk_alloc}'
 alias mysql='mysql --pager'
-alias open='gvfs-open'
 alias ping='ping -n'
 alias pol='apt-cache policy'
 alias rsync='rsync -h'
@@ -178,6 +177,8 @@ alias units='units --verbose'
 alias wgoat='wget'
 alias whois='whois -H'
 alias xse='tail --follow=name ~/.xsession-errors -n 0'
+
+command -v gvfs-open 2>&1 && alias open=gvfs-open
 
 if test -z "$CLICOLOR"; then
 	alias cgrep='grep --color --context=9999999'
