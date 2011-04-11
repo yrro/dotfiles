@@ -178,7 +178,7 @@ alias wgoat='wget'
 alias whois='whois -H'
 alias xse='tail --follow=name ~/.xsession-errors -n 0'
 
-command -v gvfs-open 2>&1 && alias open=gvfs-open
+command -v gvfs-open &>/dev/null && alias open=gvfs-open
 
 if test -z "$CLICOLOR"; then
 	alias cgrep='grep --color --context=9999999'
