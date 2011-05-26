@@ -176,6 +176,8 @@ alias rsync='rsync -h'
 alias units='units --verbose'
 alias wgoat='wget'
 alias whois='whois -H'
+alias xc='xclip -selection clipboard -in'
+alias xp='xclip -selection clipboard -out'
 alias xse='tail --follow=name ~/.xsession-errors -n 0'
 
 command -v gvfs-open &>/dev/null && alias open=gvfs-open
