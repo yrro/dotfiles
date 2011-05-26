@@ -5,6 +5,8 @@ set title
 set nocompatible
 set backspace=indent,eol,start
 
+set directory=/var/tmp//
+
 " enable mouse in all modes
 set mouse=a
 " make mouse behave like mac/windows/gnome
