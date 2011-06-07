@@ -46,7 +46,11 @@ export LESS_TERMCAP_ue=$'\E[0m' # end underline
 
 command -v dircolors >/dev/null && eval "$(dircolors -b)"
 
-test -f /etc/bash_completion.d/git && source /etc/bash_completion.d/git
+if test -f /etc/bash_completion.d/git; then
+	source /etc/bash_completion.d/git
+elif test -f /opt/local/share/doc/git-core/contrib/completion/git-completion.bash; then
+	source /opt/local/share/doc/git-core/contrib/completion/git-completion.bash
+fi
 
 # best prompt ever!
 #
