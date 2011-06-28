@@ -9,7 +9,7 @@ export DEBEMAIL="sam@robots.org.uk"
 export DARCS_EMAIL="Sam Morris <sam@robots.org.uk>"
 export PATH=$PATH:$HOME/bin
 
-test -f ~/.pythonrc && export PYTHONSTARTUP=~/.pythonrc
+test -f ~/.pythonrc && export PYTHONSTARTUP=$HOME/.pythonrc
 
 case "$(uname -s)" in
 CYGWIN_*)
