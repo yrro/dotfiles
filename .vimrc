@@ -125,3 +125,7 @@ endif
 if &term =~ "screen"
 	set ttymouse=xterm2
 endif
+
+highlight TrailWhitespace ctermbg=red guibg=#ffdecd
+match TrailWhitespace /\s\+$\| \+\ze\t/
+"autocmd Syntax * syn match TrailWhitespace /\s\+$\| \+\ze\t/
