@@ -127,5 +127,5 @@ if &term =~ "screen"
 endif
 
 highlight TrailWhitespace ctermbg=red guibg=#ffdecd
-match TrailWhitespace /\s\+$\| \+\ze\t/
+match TrailWhitespace /\s\+$\| \+\ze\t\|[^\t]\zs\t\+/
 "autocmd Syntax * syn match TrailWhitespace /\s\+$\| \+\ze\t/
