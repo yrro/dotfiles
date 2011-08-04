@@ -37,6 +37,7 @@ let g:git_branch_status_nogit=''
 if exists ("GitBranchInfoString")
     set statusline=%<%f\ %{GitBranchInfoString()}\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 en
+set ruler
 
 " show partial command in status line
 set showcmd
