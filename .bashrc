@@ -92,10 +92,6 @@ xterm*|rxvt*|screen)
 	;;
 esac
 
-function gvimcpp {
-	gvim $1.cpp "+new $1.h"
-}
-
 #function remotesign {
 #	set -e
 #
