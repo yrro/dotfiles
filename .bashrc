@@ -166,7 +166,7 @@ alias e="$EDITOR"
 alias g=git
 alias gdb='gdb -silent'
 alias hman='man --html=browser-pause'
-#alias gnutls-cli="gnutls-cli --x509cafile /etc/ssl/certs/ca-certificates.crt"
+alias gnutls-cli="gnutls-cli --x509cafile /etc/ssl/certs/ca-certificates.crt"
 alias la='ls -A'
 alias ll='ls -lh'
 alias massif='valgrind --tool=massif --depth=5 --alloc-fn={g_malloc,g_realloc,g_try_malloc,g_malloc0,g_mem_chunk_alloc}'
