@@ -6,7 +6,6 @@
 
 export BZR_EMAIL="sam@robots.org.uk"
 export DEBEMAIL="sam@robots.org.uk"
-export DARCS_EMAIL="Sam Morris <sam@robots.org.uk>"
 export PATH=$PATH:$HOME/bin
 
 test -f ~/.pythonrc && export PYTHONSTARTUP=$HOME/.pythonrc
