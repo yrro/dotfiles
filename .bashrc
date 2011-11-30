@@ -196,8 +196,4 @@ lysander)
 	alias vim='c:\\Program\ Files\ \(x86\)\\vim\\vim73\\vim.exe'
 	alias gvim='c:\\Program\ Files\ \(x86\)\\vim\\vim73\\gvim.exe'
 	;;
-xerces)
-	alias hdsleep='sudo hdparm -y /dev/hd[acdef]'
-	#alias update-menus='update-menus --nodefaultdirs --menufilesdir ~/.menu/'
-	;;
 esac
