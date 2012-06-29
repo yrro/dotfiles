@@ -153,7 +153,11 @@ function rb {
 
 function exaudio {
 	ffmpeg -i "$1" -acodec copy -vn "$2"
-    }
+}
+
+function winbreak {
+	~/src/debugbreak/debugbreak $(tasklist //fi "imagename eq $1" | awk "\$1 == \"$1\" { print \$2 }")
+}
 
 #test -r /etc/bash_completion && source /etc/bash_completion
 
