@@ -1,7 +1,5 @@
 # .bashrc is sourced for an interactive shell.
 
-#echo .bashrc
-
 # For some reason, openssh invokes bash as an interactive shell even if we
 # are only using scp. Therefore check that we have a terminal before processing
 # this file
