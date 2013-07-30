@@ -9,7 +9,7 @@ fi
 
 # disable XON/XOFF so that we can use readline's forward-search-history command
 # by pressing C-s
-command -v stty &>/dev/null && stty ixon
+command -v stty &>/dev/null && stty stop undef && stty start undef
 
 shopt -s cdspell
 #shopt -s failglob
