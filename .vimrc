@@ -72,6 +72,8 @@ else
     set guifont=Monospace\ 9
 endif
 
+set guicursor+=a:blinkon0
+
 set display+=lastline
 
 set spelllang=en_gb
