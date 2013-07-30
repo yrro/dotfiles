@@ -67,12 +67,11 @@ function user_colour {
 		printf "${csi_green}"
 	fi
 }
-csi='\033['
-csi_default=${csi}0m
-csi_cyan=${csi}36m
-csi_green=${csi}32m
-csi_red=${csi}31m
-csi_gold=${csi}33m
+csi_default=$(tput sgr 0)
+csi_cyan=$(tput setaf 6)
+csi_green=$(tput setaf 2)
+csi_red=$(tput setaf 1)
+csi_gold=$(tput setaf 3)
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWSTASHSTATE=1
 GIT_PS1_SHOWUNTRACKEDFILES=1
