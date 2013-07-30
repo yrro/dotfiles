@@ -24,7 +24,7 @@ export EDITOR=vim
 
 if test -n "$DISPLAY"
 then
-	BROWSER=gnome-open
+	BROWSER=chromium
 	alias vim=gvim
 else
 	BROWSER=w3m
