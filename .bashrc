@@ -162,7 +162,7 @@ function winbreak {
 
 alias apt='aptitude'
 alias dig='dig +multi'
-alias dquilt='QUILT_PATCHES=debian/patches quilt'
+alias dquilt='QUILT_PATCHES=debian/patches QUILT_REFRESH_ARGS="-p ab --no-timestamps --no-index" quilt'
 alias dstat='dstat --bw'
 alias dux='du -xm --max-depth=1'
 alias e="$EDITOR"
