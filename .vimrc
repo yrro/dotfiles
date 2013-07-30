@@ -44,6 +44,7 @@ set showcmd
 
 " display possible choices when tab completing
 set wildmenu
+set wildmode=longest,list:longest,list:full
 
 "set shiftwidth=4
 "set softtabstop=4
