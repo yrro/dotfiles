@@ -45,38 +45,51 @@ export LESS_TERMCAP_ue=$'\E[0m' # end underline
 
 command -v dircolors >/dev/null && eval "$(dircolors -b)"
 
-if test -f /etc/bash_completion.d/git; then
-	source /etc/bash_completion.d/git
-elif test -f /opt/local/share/doc/git-core/contrib/completion/git-completion.bash; then
-	source /opt/local/share/doc/git-core/contrib/completion/git-completion.bash
-fi
+function __git_ps1 { :; }
+for f in /etc/bash_completion.d/{git-prompt,git} /opt/local/share/doc/git-core/contrib/completion/git-completion.bash; do
+	if [[ -f $f ]]; then
+		source "$f"
+		break
+	fi
+done
+complete -r git gitk
 
 # best prompt ever!
 #
+case $(locale charmap) in
+UTF-8)
+	_smile_happy='☺'
+	_smile_frown='☹'
+	;;
+*)
+	_smile_happy=':)'
+	_smile_frown=':('
+	;;
+esac
 function smile {
-	if test $? = 0; then
-		printf "${csi_green}:)"
+	if [[ $? -eq 0 ]]; then
+		printf "${_csi_green}${_smile_happy}"
 	else
-		printf "${csi_red}:("
+		printf "${_csi_red}${_smile_frown}"
 	fi
 }
 function user_colour {
 	if test "$UID" = 0; then
-		printf "${csi_red}"
+		printf "${_csi_red}"
 	else
-		printf "${csi_green}"
+		printf "${_csi_green}"
 	fi
 }
-csi_default=$(tput sgr 0)
-csi_cyan=$(tput setaf 6)
-csi_green=$(tput setaf 2)
-csi_red=$(tput setaf 1)
-csi_gold=$(tput setaf 3)
+_csi_default=$(tput sgr 0)
+_csi_cyan=$(tput setaf 6)
+_csi_green=$(tput setaf 2)
+_csi_red=$(tput setaf 1)
+_csi_gold=$(tput setaf 3)
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWSTASHSTATE=1
 GIT_PS1_SHOWUNTRACKEDFILES=1
 GIT_PS1_SHOWUPSTREAM=verbose
-PS1="\n\$(smile) ${csi_cyan}\A $(user_colour)\u@\h ${csi_gold}\w${csi_default} \$(type -t __git_ps1 >/dev/null && __git_ps1 '(%s)')\n\\$ "
+PS1="\n\$(smile) ${_csi_cyan}\\A $(user_colour)\\u@\\h ${_csi_gold}\\w${_csi_default} \$(__git_ps1 '(%s)')\n\\$ "
 
 HISTCONTROL=ignoreboth
 HISTSIZE=5000
