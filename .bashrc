@@ -171,6 +171,14 @@ function winbreak {
 	~/src/debugbreak/debugbreak $(tasklist //fi "imagename eq $1" | awk "\$1 == \"$1\" { print \$2 }")
 }
 
+function etckeeper_check {
+	if command -v sudo >/dev/null 2>&1 && command -v etckeeper >/dev/null 2>&1; then
+		if sudo etckeeper unclean; then
+			echo 'etckeeper has uncommitted changes.'
+		fi
+	fi
+}
+
 #test -r /etc/bash_completion && source /etc/bash_completion
 
 alias apt='aptitude'

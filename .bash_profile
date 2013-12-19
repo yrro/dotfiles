@@ -40,3 +40,5 @@ case $- in
 	source ~/.bashrc
 	;;
 esac
+
+etckeeper_check
