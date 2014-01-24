@@ -8,6 +8,7 @@ export EMAIL=sam@robots.org.uk
 export BZR_EMAIL="$EMAIL"
 export DEBEMAIL="$DEBEMAIL"
 export PATH=$PATH:$HOME/bin
+export LESS=-Q
 
 test -f ~/.pythonrc && export PYTHONSTARTUP=$HOME/.pythonrc
 
