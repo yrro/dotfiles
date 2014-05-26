@@ -84,20 +84,6 @@ xterm*|rxvt*|screen)
 	;;
 esac
 
-#function remotesign {
-#	set -e
-#
-#	host="$1"
-#
-#	while shift; do
-#		test -n "$1" || continue
-#
-#		data=$(ssh "$host" cat "$file")
-#		sign=$(gpg --armor --detach-sign <<< "$data")
-#		ssh "$host" cat '>' "$file.asc"
-#	done
-#}
-
 function envof {
 	file=/proc/${1:?Usage: $0 pid}/environ
 	cmd="cat $file"
@@ -121,10 +107,6 @@ function batchfg {
 	done
 	"$@"
 }
-
-#function info {
-#	gnome-open "http://localhost/cgi-bin/info2www?($1)$2"
-#}
 
 function svngrep {
 	find -name '.svn' -prune -or -exec grep "$@" {} +
@@ -150,8 +132,6 @@ function winbreak {
 	~/src/debugbreak/debugbreak $(tasklist //fi "imagename eq $1" | awk "\$1 == \"$1\" { print \$2 }")
 }
 
-
-alias apt='aptitude'
 alias dig='dig +multi'
 alias dquilt='QUILT_PATCHES=debian/patches QUILT_REFRESH_ARGS="-p ab --no-timestamps --no-index" quilt'
 alias dstat='dstat --bw'
