@@ -27,7 +27,7 @@ then
 	BROWSER=chromium
 	alias vim=gvim
 else
-	BROWSER=w3m
+	BROWSER=www-browser
 fi
 export BROWSER
 
