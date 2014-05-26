@@ -31,7 +31,6 @@ fi
 export BROWSER
 
 export PAGER=less
-#export LESS='-icRFS'
 command -v lesspipe &>/dev/null && eval "$(lesspipe)"
 # see termcap(5) for an explanation of these codes
 export LESS_TERMCAP_mb=$'\e[01;31m' # start blink
