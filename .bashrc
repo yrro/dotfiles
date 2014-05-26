@@ -12,7 +12,6 @@ fi
 command -v stty &>/dev/null && stty stop undef && stty start undef
 
 shopt -s cdspell
-#shopt -s failglob
 shopt -s histverify
 shopt -s no_empty_cmd_completion
 
