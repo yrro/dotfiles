@@ -45,12 +45,6 @@ export LESS_TERMCAP_ue=$'\e[0m' # end underline
 
 command -v dircolors >/dev/null && eval "$(dircolors -b)"
 
-if test -f /etc/bash_completion.d/git; then
-	source /etc/bash_completion.d/git
-elif test -f /opt/local/share/doc/git-core/contrib/completion/git-completion.bash; then
-	source /opt/local/share/doc/git-core/contrib/completion/git-completion.bash
-fi
-
 # best prompt ever!
 #
 function smile {
@@ -158,7 +152,6 @@ function winbreak {
 	~/src/debugbreak/debugbreak $(tasklist //fi "imagename eq $1" | awk "\$1 == \"$1\" { print \$2 }")
 }
 
-#test -r /etc/bash_completion && source /etc/bash_completion
 
 alias apt='aptitude'
 alias dig='dig +multi'

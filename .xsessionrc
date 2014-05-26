@@ -1,5 +1,10 @@
-# set -x
+if test "$DESKTOP_SESSION" = gnome-fallback; then
+	export WINDOW_MANAGER=/usr/bin/i3
+fi
 
-. ~/.bash_profile
+if test "$DESKTOP_SESSION" = i3; then
+	#xsettingsd &
+	gnome-settings-daemon &
+fi
 
 # vim: ft=sh
