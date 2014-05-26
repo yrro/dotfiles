@@ -26,7 +26,7 @@ then
 	BROWSER=chromium
 	alias vim=gvim
 else
-	BROWSER=w3m
+	BROWSER=www-browser
 fi
 export BROWSER
 
@@ -45,30 +45,40 @@ command -v dircolors >/dev/null && eval "$(dircolors -b)"
 
 # best prompt ever!
 #
+case $(locale charmap) in
+UTF-8)
+	_smile_happy='☺'
+	_smile_frown='☹'
+	;;
+*)
+	_smile_happy=':)'
+	_smile_frown=':('
+	;;
+esac
 function smile {
-	if test $? = 0; then
-		printf "${csi_green}:)"
+	if [[ $? -eq 0 ]]; then
+		printf "${_csi_green}${_smile_happy}"
 	else
-		printf "${csi_red}:("
+		printf "${_csi_red}${_smile_frown}"
 	fi
 }
 function user_colour {
 	if test "$UID" = 0; then
-		printf "${csi_red}"
+		printf "${_csi_red}"
 	else
-		printf "${csi_green}"
+		printf "${_csi_green}"
 	fi
 }
-csi_default=$(tput sgr 0)
-csi_cyan=$(tput setaf 6)
-csi_green=$(tput setaf 2)
-csi_red=$(tput setaf 1)
-csi_gold=$(tput setaf 3)
+_csi_default=$(tput sgr 0)
+_csi_cyan=$(tput setaf 6)
+_csi_green=$(tput setaf 2)
+_csi_red=$(tput setaf 1)
+_csi_gold=$(tput setaf 3)
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWSTASHSTATE=1
 GIT_PS1_SHOWUNTRACKEDFILES=1
 GIT_PS1_SHOWUPSTREAM=verbose
-PS1="\n\$(smile) ${csi_cyan}\A $(user_colour)\u@\h ${csi_gold}\w${csi_default} \$(type -t __git_ps1 >/dev/null && __git_ps1 '(%s)')\n\\$ "
+PS1="\n\$(smile) ${_csi_cyan}\\A $(user_colour)\\u@\\h ${_csi_gold}\\w${_csi_default} \$(type -t __git_ps1 > /dev/null && __git_ps1 '(%s)')\n\\$ "
 
 HISTCONTROL=ignoreboth
 HISTSIZE=5000
@@ -130,6 +140,14 @@ function exaudio {
 
 function winbreak {
 	~/src/debugbreak/debugbreak $(tasklist //fi "imagename eq $1" | awk "\$1 == \"$1\" { print \$2 }")
+}
+
+function etckeeper_check {
+	if command -v sudo >/dev/null 2>&1 && command -v etckeeper >/dev/null 2>&1; then
+		if sudo etckeeper unclean; then
+			echo 'etckeeper has uncommitted changes.'
+		fi
+	fi
 }
 
 alias dig='dig +multi'
