@@ -144,7 +144,7 @@ function winbreak {
 
 function etckeeper_check {
 	if command -v sudo >/dev/null 2>&1 && command -v etckeeper >/dev/null 2>&1; then
-		if sudo etckeeper unclean; then
+		if sudo -n etckeeper unclean; then
 			echo 'etckeeper has uncommitted changes.'
 		fi
 	fi
