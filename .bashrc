@@ -216,6 +216,8 @@ alias massif='valgrind --tool=massif --depth=5 --alloc-fn={g_malloc,g_realloc,g_
 alias mysql='mysql --pager'
 alias ping='ping -n'
 alias pol='apt-cache policy'
+alias psc='ps xawf -o pid,user,cgroup,args'
+alias psc2='ps -o pid,user,nlwp,cgroup,args -e --forest'
 alias rsync='rsync -h'
 alias units='units --verbose'
 alias wgoat='wget'
