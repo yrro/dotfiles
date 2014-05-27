@@ -2,6 +2,10 @@ if filereadable(expand("~/.vim/autoload/pathogen.vim"))
 	call pathogen#infect()
 endif
 
+" silent
+set visualbell
+"set t_vb=
+
 " display filename and path in window title
 set title
 
