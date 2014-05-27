@@ -1,4 +1,13 @@
-# set -x
+if test -z "$XDG_CACHE_HOME"; then
+	case $(df -T ~ | tail -n 1 | awk '{print $2}') in
+	nfs)
+		if test -d /scratch; then
+			XDG_CACHE_HOME="/scratch"
+			export XDG_CACHE_HOME
+		fi
+		;;
+	esac
+fi
 
 . ~/.bash_profile
 
