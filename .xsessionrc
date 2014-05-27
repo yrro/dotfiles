@@ -9,6 +9,9 @@ if test -z "$XDG_CACHE_HOME"; then
 	esac
 fi
 
-. ~/.bash_profile
+if test "$DESKTOP_SESSION" = i3; then
+	#xsettingsd &
+	gnome-settings-daemon &
+fi
 
 # vim: ft=sh

@@ -12,7 +12,6 @@ fi
 command -v stty &>/dev/null && stty stop undef && stty start undef
 
 shopt -s cdspell
-#shopt -s failglob
 shopt -s histverify
 shopt -s no_empty_cmd_completion
 
@@ -27,12 +26,11 @@ then
 	BROWSER=chromium
 	alias vim=gvim
 else
-	BROWSER=w3m
+	BROWSER=www-browser
 fi
 export BROWSER
 
 export PAGER=less
-#export LESS='-icRFS'
 command -v lesspipe &>/dev/null && eval "$(lesspipe)"
 # see termcap(5) for an explanation of these codes
 export LESS_TERMCAP_mb=$(tput blink)
@@ -44,15 +42,6 @@ export LESS_TERMCAP_us=$(tput setaf 2) # start underline
 export LESS_TERMCAP_ue=$(tput sgr0) # end underline
 
 command -v dircolors >/dev/null && eval "$(dircolors -b)"
-
-function __git_ps1 { :; }
-for f in /etc/bash_completion.d/{git-prompt,git} /opt/local/share/doc/git-core/contrib/completion/git-completion.bash; do
-	if [[ -f $f ]]; then
-		source "$f"
-		break
-	fi
-done
-complete -r git gitk
 
 # best prompt ever!
 #
@@ -89,7 +78,7 @@ GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWSTASHSTATE=1
 GIT_PS1_SHOWUNTRACKEDFILES=1
 GIT_PS1_SHOWUPSTREAM=verbose
-PS1="\n\$(smile) ${_csi_cyan}\\A $(user_colour)\\u@\\h ${_csi_gold}\\w${_csi_default} \$(__git_ps1 '(%s)')\n\\$ "
+PS1="\n\$(smile) ${_csi_cyan}\\A $(user_colour)\\u@\\h ${_csi_gold}\\w${_csi_default} \$(type -t __git_ps1 > /dev/null && __git_ps1 '(%s)')\n\\$ "
 
 HISTCONTROL=ignoreboth
 HISTSIZE=5000
@@ -104,20 +93,6 @@ xterm*|rxvt*|screen)
 	fi
 	;;
 esac
-
-#function remotesign {
-#	set -e
-#
-#	host="$1"
-#
-#	while shift; do
-#		test -n "$1" || continue
-#
-#		data=$(ssh "$host" cat "$file")
-#		sign=$(gpg --armor --detach-sign <<< "$data")
-#		ssh "$host" cat '>' "$file.asc"
-#	done
-#}
 
 function envof {
 	file=/proc/${1:?Usage: $0 pid}/environ
@@ -142,10 +117,6 @@ function batchfg {
 	done
 	"$@"
 }
-
-#function info {
-#	gnome-open "http://localhost/cgi-bin/info2www?($1)$2"
-#}
 
 function svngrep {
 	find -name '.svn' -prune -or -exec grep "$@" {} +
@@ -173,7 +144,7 @@ function winbreak {
 
 function etckeeper_check {
 	if command -v sudo >/dev/null 2>&1 && command -v etckeeper >/dev/null 2>&1; then
-		if sudo etckeeper unclean; then
+		if sudo -n etckeeper unclean; then
 			echo 'etckeeper has uncommitted changes.'
 		fi
 	fi
@@ -199,9 +170,6 @@ function wcl-delta {
 	echo $((new - prior))
 }
 
-#test -r /etc/bash_completion && source /etc/bash_completion
-
-alias apt='aptitude'
 alias dig='dig +multi'
 alias dquilt='QUILT_PATCHES=debian/patches QUILT_REFRESH_ARGS="-p ab --no-timestamps --no-index" quilt'
 alias dstat='dstat --bw'
@@ -214,6 +182,7 @@ alias la='ls -A'
 alias ll='ls -lh'
 alias massif='valgrind --tool=massif --depth=5 --alloc-fn={g_malloc,g_realloc,g_try_malloc,g_malloc0,g_mem_chunk_alloc}'
 alias mysql='mysql --pager'
+alias odh='od -A x -t x1z'
 alias ping='ping -n'
 alias pol='apt-cache policy'
 alias psc='ps xawf -o pid,user,cgroup,args'

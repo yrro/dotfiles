@@ -129,10 +129,6 @@ endif
 
 "autocmd BufWritePost,FileWritePost /home/sam/src/occ/data/occ.py silent !ln -sf <afile>:p ~/.openoffice.org2/user/Scripts/python/occ.py
 
-if &term =~ "screen"
-	set ttymouse=xterm2
-endif
-
 highlight TrailWhitespace ctermbg=red guibg=#ffdecd
 match TrailWhitespace /\s\+$\| \+\ze\t\|[^\t]\zs\t\+/
 "autocmd Syntax * syn match TrailWhitespace /\s\+$\| \+\ze\t/
