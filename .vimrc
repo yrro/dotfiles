@@ -56,7 +56,7 @@ set linebreak
 
 set modeline
 
-filetype plugin on
+filetype plugin indent on
 syntax on
 
 " hide toolbars, tearoff menu items and don't fork
