@@ -139,3 +139,5 @@ match TrailWhitespace /\s\+$\| \+\ze\t\|[^\t]\zs\t\+/
 
 " http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=552108
 let g:is_posix = 1
+
+let g:localvimrc_persistent=1
