@@ -179,6 +179,16 @@ function etckeeper_check {
 	fi
 }
 
+function dpkg-grep {
+	package="$1"; shift
+	grep_args="$@"
+	dpkg --listfiles "$package" | while read line; do
+		if [[ -f $line ]]; then
+			grep -H $grep_args -- "$line"
+		fi
+	done
+}
+
 #test -r /etc/bash_completion && source /etc/bash_completion
 
 alias apt='aptitude'
