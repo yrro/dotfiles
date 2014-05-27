@@ -1,3 +1,7 @@
+if filereadable(expand("~/.vim/autoload/pathogen.vim"))
+	call pathogen#infect()
+endif
+
 " display filename and path in window title
 set title
 
