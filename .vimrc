@@ -136,3 +136,6 @@ endif
 highlight TrailWhitespace ctermbg=red guibg=#ffdecd
 match TrailWhitespace /\s\+$\| \+\ze\t\|[^\t]\zs\t\+/
 "autocmd Syntax * syn match TrailWhitespace /\s\+$\| \+\ze\t/
+
+" http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=552108
+let g:is_posix = 1
