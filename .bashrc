@@ -189,6 +189,16 @@ function dpkg-grep {
 	done
 }
 
+declare -A _wc_delta
+function wcl-delta {
+	file="$1"; shift
+	hash=$(printf "$file" | sha256sum | cut -d ' ' -f 1)
+	prior=${_wc_delta[$hash]:-0}
+	new=$(wc -l "$file" | cut -d ' ' -f 1)
+	_wc_delta[$hash]="$new"
+	echo $((new - prior))
+}
+
 #test -r /etc/bash_completion && source /etc/bash_completion
 
 alias apt='aptitude'
