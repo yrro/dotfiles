@@ -1,8 +1,8 @@
 if test -z "$XDG_CACHE_HOME"; then
 	case $(df -T ~ | tail -n 1 | awk '{print $2}') in
 	nfs)
-		if test -d /scratch; then
-			XDG_CACHE_HOME="/scratch"
+		if test -d /scratch/xdg-cache; then
+			XDG_CACHE_HOME="/scratch/xdg-cache"
 			export XDG_CACHE_HOME
 		fi
 		;;
