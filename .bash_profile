@@ -25,15 +25,6 @@ Darwin)
 esac
 
 case "${HOSTNAME%%.*}" in
-leela)
-	export PATH="$PATH:$HOME/src/ccpc/win32-3/mingw-w64/mingw-w32-1.0-bin_x86_64-linux_20100702/bin"
-	;;
-lysander)
-	export PATH="$PATH:/home/sam/src/ccpc/win32-3/ogre/install/bin/RelWithDebInfo:/c/Python27:/home/sam/src/ccpc/win32-3/mingw-w64/mingw-w32-1.0-bin_i686-mingw_20100702/bin"
-	;;
-jeffry)
-	export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
-       ;;
 traxus)
 	export TZ=Europe/London
 	;;
