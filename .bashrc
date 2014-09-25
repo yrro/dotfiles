@@ -17,8 +17,6 @@ shopt -s no_empty_cmd_completion
 
 export DJANGO_COLORS="light"
 
-export GREP_OPTIONS='--color=auto'
-
 export EDITOR=vim
 
 if test -n "$DISPLAY"
@@ -199,8 +197,14 @@ alias xse='tail --follow=name ~/.xsession-errors -n 0'
 command -v gvfs-open &>/dev/null && alias open=gvfs-open
 
 if test -z "$CLICOLOR"; then
-	alias cgrep='grep --color --context=9999999'
+	export GREP_OPTIONS='--color=auto'
+
 	alias ls='ls --color=auto'
+
+	function cgrep {
+		pattern="$1"; shift
+		grep "^\|$pattern" "$@"
+	}
 fi
 
 case $HOSTNAME in
