@@ -72,11 +72,22 @@ _csi_cyan=$(tput setaf 6)
 _csi_green=$(tput setaf 2)
 _csi_red=$(tput setaf 1)
 _csi_gold=$(tput setaf 3)
+if ! type -t __git_ps1 > /dev/null; then
+	function __git_ps1 { :; }
+fi
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWSTASHSTATE=1
 GIT_PS1_SHOWUNTRACKEDFILES=1
 GIT_PS1_SHOWUPSTREAM=verbose
-PS1="\n\$(smile) ${_csi_cyan}\\A $(user_colour)\\u@\\h ${_csi_gold}\\w${_csi_default} \$(type -t __git_ps1 > /dev/null && __git_ps1 '(%s)')\n\\$ "
+function __java_ps1 {
+	declare -x | while read declare flag varval crap; do
+		if [[ $varval =~ ^JAVA_HOME= ]]; then
+			printf ' J'
+			break
+		fi
+	done
+}
+PS1="\n\$(smile) ${_csi_cyan}\\A $(user_colour)\\u@\\h ${_csi_gold}\\w${_csi_default} \$(__git_ps1 '(%s)')\$(__java_ps1)\n\\$ "
 
 HISTCONTROL=ignoreboth
 HISTSIZE=5000
