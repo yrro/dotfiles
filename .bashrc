@@ -180,6 +180,7 @@ function wcl-delta {
 }
 
 alias dig='dig +multi'
+alias docker='sudo -g docker docker'
 alias dquilt='QUILT_PATCHES=debian/patches QUILT_REFRESH_ARGS="-p ab --no-timestamps --no-index" quilt'
 alias dstat='dstat --bw'
 alias dux='du -xm --max-depth=1'
@@ -204,6 +205,15 @@ alias whois='whois -H'
 alias xc='xclip -selection clipboard -in'
 alias xp='xclip -selection clipboard -out'
 alias xse='tail --follow=name ~/.xsession-errors -n 0'
+
+function docker-ip {
+	docker inspect --format '{{ .NetworkSettings.IPAddress }}' "$@"
+}
+
+function docker-rmi-dangling {
+	local images=($(docker images -q --filter=dangling=true))
+	[[ ${#images[@]} -eq 0 ]] || docker rmi "${images[@]}"
+}
 
 command -v gvfs-open &>/dev/null && alias open=gvfs-open
 
