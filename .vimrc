@@ -137,3 +137,5 @@ match TrailWhitespace /\s\+$\| \+\ze\t\|[^\t]\zs\t\+/
 let g:is_posix = 1
 
 let g:localvimrc_persistent=1
+
+let g:GPGExecutable = "gpg2 --trust-model always"
