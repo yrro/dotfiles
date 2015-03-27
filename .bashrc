@@ -104,10 +104,10 @@ xterm*|rxvt*|screen)
 esac
 
 function envof {
-	file=/proc/${1:?Usage: $0 pid}/environ
-	cmd="cat $file"
-	test -r $file || cmd="sudo $cmd"
-	$cmd | tr '\0' '\n' | cat -v
+	local file="/proc/${1:?Usage: $0 pid}/environ"
+	local cmd=(cat "$file")
+	test -r "$file" || cmd=(sudo "${cmd[@]}")
+	"${cmd[@]}" | tr '\0' '\n' | cat -v
 }
 
 function physize {
@@ -119,7 +119,7 @@ function block {
 }
 
 function batchfg {
-	foo="$(awk '{print $1}' /proc/loadavg) < 1.5"
+	local foo="$(awk '{print $1}' /proc/loadavg) < 1.5"
 	while test "$(bc <<< "$foo")" = '0'; do
 		foo="$(awk '{print $1}' /proc/loadavg) < 1.5"
 		sleep 5
@@ -160,27 +160,28 @@ function etckeeper_check {
 }
 
 function dpkg-grep {
-	package="$1"; shift
-	grep_args="$@"
+	local package="$1"; shift
+	local grep_args=("$@")
 	dpkg --listfiles "$package" | while read line; do
 		if [[ -f $line ]]; then
-			grep -H $grep_args -- "$line"
+			grep -H "${grep_args[@]}" -- "$line"
 		fi
 	done
 }
 
 declare -A _wc_delta
 function wcl-delta {
-	file="$1"; shift
-	hash=$(printf "$file" | sha256sum | cut -d ' ' -f 1)
-	prior=${_wc_delta[$hash]:-0}
-	new=$(wc -l "$file" | cut -d ' ' -f 1)
-	_wc_delta[$hash]="$new"
+	local file="$1"; shift
+	local hash=$(printf "$file" | sha256sum | cut -d ' ' -f 1)
+	local prior=${_wc_delta[$hash]:-0}
+	local new=$(wc -l "$file" | cut -d ' ' -f 1)
+	local _wc_delta[$hash]="$new"
 	echo $((new - prior))
 }
 
 alias dig='dig +multi'
 alias docker='sudo -g docker docker'
+alias docker-pid=$'docker inspect --format \'{{ .State.Pid }}\''
 alias dquilt='QUILT_PATCHES=debian/patches QUILT_REFRESH_ARGS="-p ab --no-timestamps --no-index" quilt'
 alias dstat='dstat --bw'
 alias dux='du -xm --max-depth=1'
@@ -188,6 +189,7 @@ alias e="$EDITOR"
 alias g=git
 alias gdb='gdb -silent'
 alias gnutls-cli="gnutls-cli --x509cafile /etc/ssl/certs/ca-certificates.crt"
+alias j=journalctl
 alias la='ls -A'
 alias ll='ls -lh'
 alias massif='valgrind --tool=massif --depth=5 --alloc-fn={g_malloc,g_realloc,g_try_malloc,g_malloc0,g_mem_chunk_alloc}'
@@ -198,6 +200,7 @@ alias pol='apt-cache policy'
 alias psc='ps xawf -o pid,user,cgroup,args'
 alias psc2='ps -o pid,user,nlwp,cgroup,args -e --forest'
 alias rsync='rsync -h'
+alias s=systemctl
 alias units='units --verbose'
 alias watch='watch -c'
 alias wgoat='wget'
@@ -215,7 +218,9 @@ function docker-rmi-dangling {
 	[[ ${#images[@]} -eq 0 ]] || docker rmi "${images[@]}"
 }
 
-command -v gvfs-open &>/dev/null && alias open=gvfs-open
+if command -v gvfs-open &>/dev/null; then
+	alias open=gvfs-open
+fi
 
 if test -z "$CLICOLOR"; then
 	export GREP_OPTIONS='--color=auto'
