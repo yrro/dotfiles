@@ -179,6 +179,12 @@ function wcl-delta {
 	echo $((new - prior))
 }
 
+function cheap-dpigs {
+	limit=${1:-10}
+	dpkg-query --show --showformat '${Package} ${Installed-Size}\n' | sort -r -n -k 2 | head -n "${limit}" | column -t
+}
+
+alias aptwhy='apt-cache rdepends --installed'
 alias dig='dig +multi'
 alias docker='sudo -g docker docker'
 alias docker-pid=$'docker inspect --format \'{{ .State.Pid }}\''
