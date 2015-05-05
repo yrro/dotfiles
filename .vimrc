@@ -1,4 +1,5 @@
-if filereadable(expand("~/.vim/autoload/pathogen.vim"))
+runtime! autoload/pathogen.vim
+if exists("*pathogen#infect")
 	call pathogen#infect()
 endif
 
