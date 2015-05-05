@@ -140,3 +140,5 @@ let g:is_posix = 1
 let g:localvimrc_persistent=1
 
 let g:GPGExecutable = "gpg2 --trust-model always"
+
+let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
