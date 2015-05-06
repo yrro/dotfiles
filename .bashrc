@@ -224,6 +224,10 @@ function docker-rmi-dangling {
 	[[ ${#images[@]} -eq 0 ]] || docker rmi "${images[@]}"
 }
 
+function ps-user {
+	ps -u "$1" -o pid,nlwp,cmd f
+}
+
 if command -v gvfs-open &>/dev/null; then
 	alias open=gvfs-open
 fi
