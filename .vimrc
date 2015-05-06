@@ -173,6 +173,8 @@ if !exists(":DiffOrig")
 		  \ | wincmd p | diffthis
 endif
 
+nnoremap <leader>G :GundoToggle<CR>
+
 let g:GPGExecutable = "gpg2 --trust-model always"
 
 let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
