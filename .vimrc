@@ -139,6 +139,8 @@ let g:is_posix = 1
 
 let g:localvimrc_persistent=1
 
+let g:syntastic_puppet_puppetlint_exec = '~/.gem/ruby/1.9.1/bin/puppet-lint'
+
 let g:GPGExecutable = "gpg2 --trust-model always"
 
 let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
