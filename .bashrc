@@ -82,12 +82,14 @@ GIT_PS1_SHOWUPSTREAM=verbose
 function __java_ps1 {
 	declare -x | while read declare flag varval crap; do
 		if [[ $varval =~ ^JAVA_HOME= ]]; then
-			printf ' J'
+			local jh
+			IFS=/ read -a jh <<< "$JAVA_HOME"
+			printf 'J=%s' "${jh[-1]}"
 			break
 		fi
 	done
 }
-PS1="\n\$(smile) ${_csi_cyan}\\A $(user_colour)\\u@\\h ${_csi_gold}\\w${_csi_default} \$(__git_ps1 '(%s)')\$(__java_ps1)\n\\$ "
+PS1="\n\$(smile) ${_csi_cyan}\\A $(user_colour)\\u@\\h ${_csi_gold}\\w${_csi_default} \$(__git_ps1 '(%s) ')\$(__java_ps1)\n\\$ "
 
 HISTCONTROL=ignoreboth
 HISTSIZE=5000
