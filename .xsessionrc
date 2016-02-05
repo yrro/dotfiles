@@ -14,4 +14,8 @@ if test "$DESKTOP_SESSION" = i3; then
 	gnome-settings-daemon &
 fi
 
+if test "$DESKTOP_SESSION" = gnome-i3; then
+	xset s off
+fi
+
 # vim: ft=sh
