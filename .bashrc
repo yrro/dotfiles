@@ -97,7 +97,7 @@ function __systemd_ps1 {
 		printf '%s%s%s ' "${_csi_purple}" "$s" "${_csi_default}"
 	fi
 }
-PS1="\n\$(smile) ${_csi_cyan}\\A $(user_colour)\\u@\\h $(__systemd_ps1)${_csi_gold}\\w${_csi_default} \$(__git_ps1 '(%s) ')\$(__java_ps1)\n\\$ "
+PS1="\n\$(smile) ${_csi_cyan}\\A \$(user_colour)\\u@\\h \$(__systemd_ps1)${_csi_gold}\\w${_csi_default} \$(__git_ps1 '(%s) ')\$(__java_ps1)\n\\$ "
 
 HISTCONTROL=ignoreboth
 HISTSIZE=5000
