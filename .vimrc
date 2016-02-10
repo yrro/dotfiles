@@ -120,11 +120,6 @@ if &diff
 	syn off
 endif
 
-" automatically load the GUI when run under X11
-if has('gui') && $DISPLAY != ''
-	gui
-endif
-
 "set listchars=eol:␤,tab:␉\ ,trail:␠,extends:>,precedes:<,nbsp:␠
 "set list
 

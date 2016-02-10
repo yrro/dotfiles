@@ -17,12 +17,12 @@ shopt -s no_empty_cmd_completion
 
 export DJANGO_COLORS="light"
 
+export VISUAL=gvim
 export EDITOR=vim
 
 if test -n "$DISPLAY"
 then
 	BROWSER=chromium
-	alias vim=gvim
 else
 	BROWSER=www-browser
 fi
