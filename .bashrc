@@ -111,6 +111,7 @@ xterm*|rxvt*|screen)
 	if [[ ! $PROMPT_COMMAND ]]; then
 		PROMPT_COMMAND='printf "\033]0;${HOSTNAME%%.*}:${PWD/#$HOME/~}\a"'
 	fi
+	
 	;;
 esac
 
