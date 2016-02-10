@@ -204,8 +204,8 @@ alias bc='bc -q'
 alias dig='dig +multi'
 alias docker='sudo -g docker docker'
 alias docker-pid=$'docker inspect --format \'{{ .State.Pid }}\''
-alias dquilt='QUILT_PATCHES=debian/patches QUILT_REFRESH_ARGS="-p ab --no-timestamps --no-index" quilt'
 alias dstat='dstat --bw'
+alias dquilt='QUILT_PATCHES=debian/patches QUILT_NO_DIFF_INDEX=1 QUILT_NO_DIFF_TIMESTAMPS=1 QUILT_REFRESH_ARGS="-p ab" quilt'
 alias dux='du -xm --max-depth=1'
 alias e="$EDITOR"
 alias g=git
