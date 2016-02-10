@@ -10,8 +10,21 @@ if test -z "$XDG_CACHE_HOME"; then
 fi
 
 if test "$DESKTOP_SESSION" = i3; then
-	#xsettingsd &
+	export XDG_CURRENT_DESKTOP=GNOME
+	xset s off
+
 	gnome-settings-daemon &
+
+	# at work this is not necessary, g-s-d sets it. but here...
+	setxkbmap -option compose:rwin
+
+	xset -dpms
+
+	/usr/lib/notification-daemon/notification-daemon &
+	/usr/lib/evolution/3.12/evolution-alarm-notify &
+	empathy &
+	nm-applet &
+	/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 fi
 
 if test "$DESKTOP_SESSION" = gnome-i3; then
