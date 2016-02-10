@@ -200,6 +200,7 @@ function cheap-dpigs {
 }
 
 alias aptwhy='apt-cache rdepends --installed'
+alias bc='bc -q'
 alias dig='dig +multi'
 alias docker='sudo -g docker docker'
 alias docker-pid=$'docker inspect --format \'{{ .State.Pid }}\''
