@@ -12,6 +12,7 @@ fi
 command -v stty &>/dev/null && stty stop undef && stty start undef
 
 shopt -s cdspell
+shopt -s histappend
 shopt -s histverify
 shopt -s no_empty_cmd_completion
 
@@ -114,6 +115,8 @@ xterm*|rxvt*|screen)
 	
 	;;
 esac
+
+PROMPT_COMMAND="history -a;${PROMPT_COMMAND:-:}"
 
 function envof {
 	local file="/proc/${1:?Usage: $0 pid}/environ"
