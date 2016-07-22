@@ -172,7 +172,8 @@ endif
 
 nnoremap <leader>G :GundoToggle<CR>
 
-colorscheme anotherdark
+"colorscheme anotherdark
+colorscheme xoria256
 
 set breakindent
 
