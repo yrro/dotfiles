@@ -248,8 +248,7 @@ if command -v gvfs-open &>/dev/null; then
 fi
 
 if test -z "$CLICOLOR"; then
-	export GREP_OPTIONS='--color=auto'
-
+	alias grep='grep --color=auto'
 	alias ls='ls --color=auto'
 
 	function cgrep {
