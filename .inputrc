@@ -2,35 +2,9 @@
 
 $include /etc/inputrc
 
-#set convert-meta off
-
 set colored-stats
-# Don't beep when tab-completing
 set bell-style none
-
 #set match-hidden-files off
 set blink-matching-paren on
 #set horizontal-scroll-mode on
 #set show-all-if-ambiguous on
-
-# something about control characters in real ttys
-#set bind-tty-special-chars on
-
-# insert
-#"\e[2~": overwrite-mode
-
-# pgup/pgdn
-#"\e[5~": history-search-backward
-#"\e[6~": history-search-forward
-
-# ctrl+delete
-#"\e[3;5~": kill-word
-
-#"": backward-kill-word
-#"\e?": backward-kill-word
-#control-DEL: backward-kill-word
-#"\C-DEL": backward-kill-word
-
-# If not present in /etc/inputrc
-#"\e[1;5C": forward-word
-#"\e[1;5D": backward-word
