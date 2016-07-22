@@ -94,7 +94,8 @@ function __java_ps1 {
 	done
 }
 function __systemd_ps1 {
-	if [[ $(systemctl is-system-running) != running ]]; then
+	local s=$(systemctl is-system-running)
+	if [[ $s != running ]]; then
 		printf '%s%s%s ' "${_csi_purple}" "$s" "${_csi_default}"
 	fi
 }
