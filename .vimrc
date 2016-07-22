@@ -3,6 +3,8 @@ if exists("*pathogen#infect")
 	call pathogen#infect()
 endif
 
+runtime ftplugin/man.vim
+
 " silent
 set visualbell
 "set t_vb=
