@@ -4,6 +4,7 @@ $include /etc/inputrc
 
 #set convert-meta off
 
+set colored-stats
 # Don't beep when tab-completing
 set bell-style none
 
