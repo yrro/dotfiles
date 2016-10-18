@@ -16,13 +16,13 @@ set visualbell
 set title
 
 " taken from debian.vim
-set nocompatible
-set backspace=indent,eol,start
+"set nocompatible
+"set backspace=indent,eol,start
 
 set directory=/var/tmp//
 
 " enable mouse in all modes
-set mouse=a
+"set mouse=a
 " make mouse behave like mac/windows/gnome
 set mousemodel=popup_setpos
 
@@ -32,10 +32,10 @@ set splitright
 " hilight search results
 set hlsearch
 " incremental search
-set incsearch
+"set incsearch
 
 " show patching parentheses
-set showmatch
+"set showmatch
 
 " always display status line
 set laststatus=2
@@ -46,13 +46,13 @@ set cursorline
 " emulate default status line; add git branch info
 set statusline=%<%f\ %{exists('g:loaded_fugitive')?fugitive#statusline():''}\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 
-set ruler
+"set ruler
 
 " show partial command in status line
-set showcmd
+"set showcmd
 
 " display possible choices when tab completing
-set wildmenu
+"set wildmenu
 set wildmode=longest,list:longest,list:full
 
 "set shiftwidth=4
@@ -65,8 +65,8 @@ set linebreak
 
 set modeline
 
-filetype plugin indent on
-syntax on
+"filetype plugin indent on
+"syntax on
 
 " hide toolbars, tearoff menu items and don't fork
 set guioptions-=T
