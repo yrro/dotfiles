@@ -7,10 +7,18 @@ else
     set ruler
     set showcmd
     set wildmenu
-    set display=truncate
     set incsearch
     map Q gq
     inoremap <C-U> <C-G>u<C-U>
+    if has('mouse')
+        set mouse=a
+    endif
+    if &t_Co > 2 || has('gui_running')
+        syntax on
+    endif
+    if has('autocmd')
+        filetype plugin indent on
+    endif
 endif
 
 " makes Man command available even if ft!=man

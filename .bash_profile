@@ -30,6 +30,11 @@ traxus)
 	;;
 esac
 
+if [[ -n $SSH_AUTH_SOCK && -n $TMUX && ! -L $SSH_AUTH_SOCK ]]; then
+	ln -sfr  "$SSH_AUTH_SOCK" "$TMUX.ssh"
+	SSH_AUTH_SOCK="$TMUX.ssh"
+fi
+
 # Source .bashrc if this is an interactive shell
 case $- in
 *i*)
