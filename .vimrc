@@ -48,7 +48,7 @@ set guioptions-=t
 set guioptions+=f
 
 if has ("win32")
-    set guifont=DejaVu_Sans_Mono:h9
+    set guifont=Consolas
 elseif has ("mac")
     set guifont=Menlo\ Regular:h12
 else
