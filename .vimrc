@@ -61,8 +61,8 @@ set display+=lastline
 
 set spelllang=en_gb
 
-autocmd FileType mail setlocal spell
-autocmd FileType debchangelog setlocal expandtab
+"autocmd FileType mail setlocal spell
+"autocmd FileType debchangelog setlocal expandtab
 
 " don't use tabs in python files
 "autocmd FileType python setlocal expandtab
