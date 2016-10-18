@@ -105,8 +105,6 @@ colorscheme xoria256
 
 set breakindent
 
-let g:GPGExecutable = "gpg2 --trust-model always"
-
 let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
 
 if has('packages')
