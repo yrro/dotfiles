@@ -11,8 +11,9 @@ set visualbell
 " display filename and path in window title
 set title
 
-
-set directory=/var/tmp//
+if filereadable($VIMRUNTIME . "/debian.vim")
+	set directory=/var/tmp//
+endif
 
 " make mouse behave like mac/windows/gnome
 set mousemodel=popup_setpos
