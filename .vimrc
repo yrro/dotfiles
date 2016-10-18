@@ -12,7 +12,7 @@ set visualbell
 set title
 
 if filereadable($VIMRUNTIME . "/debian.vim")
-	set directory=/var/tmp//
+    set directory=/var/tmp//
 endif
 
 " make mouse behave like mac/windows/gnome
@@ -108,5 +108,7 @@ set breakindent
 let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
 
 if has('packages')
-	packadd! matchit
+    packadd! matchit
 endif
+
+" vim: ts=8 sts=4 sw=4 et
