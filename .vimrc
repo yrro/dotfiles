@@ -1,5 +1,17 @@
-unlet! skip_defaults_vim
-source $VIMRUNTIME/defaults.vim
+if has("patch-7.4.2111")
+    unlet! skip_defaults_vim
+    source $VIMRUNTIME/defaults.vim
+else
+    set nocompatible
+    set backspace=indent,eol,start
+    set ruler
+    set showcmd
+    set wildmenu
+    set display=truncate
+    set incsearch
+    map Q gq
+    inoremap <C-U> <C-G>u<C-U>
+endif
 
 " makes Man command available even if ft!=man
 runtime ftplugin/man.vim
