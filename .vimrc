@@ -1,3 +1,6 @@
+unlet! skip_defaults_vim
+source $VIMRUNTIME/defaults.vim
+
 runtime! autoload/pathogen.vim
 if exists("*pathogen#infect")
 	call pathogen#infect()
