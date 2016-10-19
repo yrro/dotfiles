@@ -120,8 +120,12 @@ nnoremap <silent> <Leader>T :CommandTTag<CR>
 
 nnoremap <leader>G :GundoToggle<CR>
 
-"colorscheme anotherdark
-colorscheme xoria256
+set bg=dark
+if &t_Co == 256 || has('gui_running')
+    colorscheme xoria256
+else
+    "colorscheme anotherdark
+endif
 
 set breakindent
 
