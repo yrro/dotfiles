@@ -1,5 +1,7 @@
-
 # pdebuild uses this to work out how to get root in order to invoke pbuilder
-printf -v PBUILDERROOTCMD 'sudo _DIST=%q _USENETWORK=%q _HOOKDIR=%q _DEB_BUILD_OPTIONS=%q' "$_DIST" "$_USENETWORK" "$_HOOKDIR" "$_DEB_BUILD_OPTIONS"
+PBUILDERROOTCMD=sudo
+for e in _ARCHITECTURE _DIST _USENETWORK _HOOKDIR _DEB_BUILD_OPTIONS; do
+	PBUILDERROOTCMD+=" $e=${!e}"
+done
 
 # vim: ft=sh
