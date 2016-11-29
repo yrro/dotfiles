@@ -199,7 +199,7 @@ function cheap-dpigs {
 	dpkg-query --show --showformat '${Package} ${Installed-Size}\n' | sort -r -n -k 2 | head -n "${limit}" | column -t
 }
 
-alias aptwhy='apt-cache rdepends --installed'
+alias aptwhy='apt-cache rdepends --installed --no-conflicts --no-breaks --no-replaces --no-enhances'
 alias bc='bc -q'
 alias dig='dig +multi'
 alias docker='sudo -g docker docker'
@@ -220,8 +220,12 @@ alias ping='ping -n'
 alias pol='apt-cache policy'
 alias psc='ps xawf -o pid,user,cgroup,args'
 alias psc2='ps -o pid,user,nlwp,cgroup,args -e --forest'
+alias psc3='ps -o pid,user,nlwp,unit,args -e --forest'
+alias py3='ipython3'
 alias rsync='rsync -h'
 alias s=systemctl
+alias sndtest1='pasuspender -- aplay -D plughw:CARD=I82801AAICH,DEV=0 /usr/share/sounds/alsa/Front_Left.wav'
+alias tar='tar --force-local'
 alias units='units --verbose'
 alias watch='watch -c'
 alias wgoat='wget'
