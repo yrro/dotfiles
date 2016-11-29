@@ -270,3 +270,5 @@ lysander)
 	alias gvim='c:\\Program\ Files\ \(x86\)\\vim\\vim73\\gvim.exe'
 	;;
 esac
+
+etckeeper_check
