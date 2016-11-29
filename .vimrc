@@ -124,7 +124,7 @@ nnoremap <silent> <Leader>T :CommandTTag<CR>
 nnoremap <leader>G :GundoToggle<CR>
 
 set bg=dark
-if &t_Co == 256 || has('gui_running')
+if &t_Co == 256 || has('gui_running') && !empty(globpath(&rtp, 'colors/xoria256.vim'))
     colorscheme xoria256
 else
     "colorscheme anotherdark
