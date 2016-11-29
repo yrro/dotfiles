@@ -7,7 +7,6 @@
 # explanation of this insanity. Also <http://lkml.org/lkml/2005/4/25/205>.
 
 export EMAIL=sam@robots.org.uk
-export BZR_EMAIL="$EMAIL"
 export NAME='Sam Morris'
 export PATH=$PATH:$HOME/bin:$HOME/.local/bin
 
