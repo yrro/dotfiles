@@ -87,6 +87,9 @@ set spelllang=en_gb
 " don't use tabs in python files
 "autocmd FileType python setlocal expandtab
 
+autocmd FileType python map <silent> <leader>b oimport ipdb; ipdb.set_trace()<esc>
+autocmd FileType python map <silent> <leader>B Oimport ipdb; ipdb.set_trace()<esc>
+
 " actionscript, not atlas
 autocmd! filetypedetect BufNewFile,BufRead *.as
 autocmd  filetypedetect BufNewFile,BufRead *.as set ft=actionscript
