@@ -94,9 +94,14 @@ function __java_ps1 {
 	done
 }
 function __systemd_ps1 {
-	local s=$(systemctl is-system-running)
+	local s
+	s=$(systemctl is-system-running)
 	if [[ $s != running ]]; then
 		printf '%s%s%s ' "${_csi_purple}" "$s" "${_csi_default}"
+	fi
+	s=$(systemctl --user is-system-running)
+	if [[ $s != running ]]; then
+		printf '%s%s%s ' "${_csi_purple}" "user:$s" "${_csi_default}"
 	fi
 }
 PS1="\n\$(smile) ${_csi_cyan}\\A \$(user_colour)\\u@\\h \$(__systemd_ps1)${_csi_gold}\\w${_csi_default} \$(__git_ps1 '(%s) ')\$(__java_ps1)\n\\$ "
