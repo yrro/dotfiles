@@ -3,8 +3,8 @@
 # For some reason, openssh invokes bash as an interactive shell even if we
 # are only using scp. Therefore check that we have a terminal before processing
 # this file
-if test -n "$SSH_CONNECTION"; then
-    tty -s || return
+if test -n "$SSH_CONNECTION" && ! tty -s; then
+	return
 fi
 
 # disable XON/XOFF so that we can use readline's forward-search-history command
