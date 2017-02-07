@@ -216,6 +216,7 @@ alias e="$EDITOR"
 alias g=git
 alias gdb='gdb -silent'
 alias gnutls-cli="gnutls-cli --x509cafile /etc/ssl/certs/ca-certificates.crt"
+alias ip='ip -c'
 alias j=journalctl
 alias la='ls -A'
 alias ll='ls -lh'
