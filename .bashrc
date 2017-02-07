@@ -218,6 +218,7 @@ alias gdb='gdb -silent'
 alias gnutls-cli="gnutls-cli --x509cafile /etc/ssl/certs/ca-certificates.crt"
 alias ip='ip -c'
 alias j=journalctl
+alias journalctl='journalctl --no-hostname'
 alias la='ls -A'
 alias ll='ls -lh'
 alias massif='valgrind --tool=massif --depth=5 --alloc-fn={g_malloc,g_realloc,g_try_malloc,g_malloc0,g_mem_chunk_alloc}'
