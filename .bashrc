@@ -204,7 +204,8 @@ function cheap-dpigs {
 	dpkg-query --show --showformat '${Package} ${Installed-Size}\n' | sort -r -n -k 2 | head -n "${limit}" | column -t
 }
 
-alias aptwhy='apt-cache rdepends --installed --no-conflicts --no-breaks --no-replaces --no-enhances'
+alias aptwhy='apt-cache rdepends --no-conflicts --no-breaks --no-replaces --no-enhances'
+alias aptwhyi='apt-cache rdepends --no-conflicts --no-breaks --no-replaces --no-enhances --installed'
 alias bc='bc -q'
 alias dig='dig +multi'
 alias docker='sudo -g docker docker'
