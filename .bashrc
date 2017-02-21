@@ -183,7 +183,7 @@ function dpkg-grep {
 	local package="$1"; shift
 	local grep_args=("$@")
 	dpkg --listfiles "$package" | while read line; do
-		if [[ -f $line ]]; then
+		if [[ -f $line && ! -L $line ]]; then
 			grep --color=auto -H "${grep_args[@]}" -- "$line"
 		fi
 	done
