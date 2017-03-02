@@ -2,6 +2,7 @@
 
 $include /etc/inputrc
 
+set colored-completion-prefix
 set colored-stats
 set bell-style none
 #set match-hidden-files off
