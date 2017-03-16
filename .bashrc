@@ -31,15 +31,15 @@ fi
 export BROWSER
 
 export PAGER=less
-command -v lesspipe &>/dev/null && eval "$(lesspipe)"
-# see termcap(5) for an explanation of these codes
-export LESS_TERMCAP_mb=$(tput blink)
-export LESS_TERMCAP_md=$(tput setaf 1)
-export LESS_TERMCAP_me=$(tput sgr0)
-export LESS_TERMCAP_so=$(tput smso; tput setab 3; tput setaf 4) # start standout (status line)
-export LESS_TERMCAP_se=$(tput sgr0) # end standout
-export LESS_TERMCAP_us=$(tput setaf 2) # start underline
-export LESS_TERMCAP_ue=$(tput sgr0) # end underline
+command -v lesspipe > /dev/null && eval "$(lesspipe)"
+# https://en.wikipedia.org/wiki/ANSI_escape_code
+export LESS_TERMCAP_mb=$'\e[1;31m' # mode blink
+export LESS_TERMCAP_md=$'\e[91m' # mode bold
+export LESS_TERMCAP_me=$'\e[22;39m' # mode end
+export LESS_TERMCAP_so=$'\e[44;93m' # standout
+export LESS_TERMCAP_se=$'\e[39;49m' # standout end
+export LESS_TERMCAP_us=$'\e[92m' # underline start
+export LESS_TERMCAP_ue=$'\e[39m' # underline end
 
 command -v dircolors >/dev/null && eval "$(dircolors -b)"
 
@@ -69,12 +69,12 @@ function user_colour {
 		printf "${_csi_green}"
 	fi
 }
-_csi_default=$(tput sgr 0)
-_csi_cyan=$(tput setaf 6)
-_csi_green=$(tput setaf 2)
-_csi_red=$(tput setaf 1)
-_csi_gold=$(tput setaf 3)
-_csi_purple=$(tput setaf 141)
+_csi_default=$'\e[39m'
+_csi_cyan=$'\e[36m'
+_csi_green=$'\e[32m'
+_csi_red=$'\e[91m'
+_csi_gold=$'\e[33m'
+_csi_purple=$'\e[38;5;141m'
 if ! type -t __git_ps1 > /dev/null; then
 	function __git_ps1 { :; }
 fi
