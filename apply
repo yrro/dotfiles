@@ -1,7 +1,5 @@
 #!/bin/bash
+
 set -eu
-dir=$(dirname ${BASH_SOURCE[0]})
-find "$dir" \
-	-path "$dir/.git/*" -prune \
-	-or -name '*.orig' -prune \
-	-or -name '.*' -type f -exec ln -sri -t ~ {} +
+
+exec stow -t ~ *

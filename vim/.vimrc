@@ -60,7 +60,8 @@ set wildmode=longest,list:longest,list:full
 set nowrap
 set linebreak
 
-set modeline
+" seems to be already set by something
+"set modeline
 
 " hide toolbars, tearoff menu items and don't fork
 set guioptions-=T
@@ -138,4 +139,4 @@ if has('packages')
     packadd! matchit
 endif
 
-" vim: ts=8 sts=4 sw=4 et
+" vim: ts=8 sts=4 sw=4 et 

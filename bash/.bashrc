@@ -19,7 +19,13 @@ shopt -s no_empty_cmd_completion
 
 export DJANGO_COLORS="light"
 
-export VISUAL=gvim
+case $(systemd-detect-virt) in
+oracle)
+	;;
+*)
+	export VISUAL=gvim
+	;;
+esac
 export EDITOR=vim
 
 if test -n "$DISPLAY"
@@ -30,7 +36,6 @@ else
 fi
 export BROWSER
 
-export PAGER=less
 command -v lesspipe > /dev/null && eval "$(lesspipe)"
 # https://en.wikipedia.org/wiki/ANSI_escape_code
 export LESS_TERMCAP_mb=$'\e[1;31m' # mode blink
@@ -40,6 +45,25 @@ export LESS_TERMCAP_so=$'\e[44;93m' # standout
 export LESS_TERMCAP_se=$'\e[39;49m' # standout end
 export LESS_TERMCAP_us=$'\e[92m' # underline start
 export LESS_TERMCAP_ue=$'\e[39m' # underline end
+
+function colorfgbg {
+	local x
+	local fg
+	#local bg
+	# XXX why isn't vim taking this from the terminal directly?
+	stty -echo
+	echo -ne '\e]10;?\a'
+	IFS=: read -t 0.1 -d $'\a' x fg
+	#echo -ne '\e]11;?\a'
+	#IFS=: read -t 0.1 -d $'\a' x bg
+	if [[ ${fg:0:1} =~ [01234567] ]]; then
+		export COLORFGBG='0;15'
+	else
+		export COLORFGBG='15;0'
+	fi
+	stty echo
+}
+colorfgbg
 
 command -v dircolors >/dev/null && eval "$(dircolors -b)"
 
@@ -104,6 +128,7 @@ function __systemd_ps1 {
 		printf '%s%s%s ' "${_csi_purple}" "user:$s" "${_csi_default}"
 	fi
 }
+
 PS1="\n\$(smile) ${_csi_cyan}\\A \$(user_colour)\\u@\\h \$(__systemd_ps1)${_csi_gold}\\w${_csi_default} \$(__git_ps1 '(%s) ')\$(__java_ps1)\n\\$ "
 
 HISTCONTROL=ignoreboth
@@ -113,15 +138,11 @@ HISTSIZE=5000
 #
 case "$TERM" in
 xterm*|rxvt*|screen)
-	# http://www.faqs.org/docs/Linux-mini/Xterm-Title.html#ss3.1
-	if [[ ! $PROMPT_COMMAND ]]; then
-		PROMPT_COMMAND='printf "\033]0;${HOSTNAME%%.*}:${PWD/#$HOME/~}\a"'
-	fi
-	
+	PS1="\\e]0;\\h:\\w\\a$PS1"
 	;;
 esac
 
-PROMPT_COMMAND="history -a;${PROMPT_COMMAND:-:}"
+PS0='$(history -a)'
 
 function envof {
 	local file="/proc/${1:?Usage: $0 pid}/environ"
@@ -254,6 +275,10 @@ function docker-rmi-dangling {
 function ps-user {
 	ps -u "$1" -o pid,nlwp,cmd f
 }
+
+if ! command -v dpigs >/dev/null; then
+	alias dpigs=$'dpkg-query -W -f \'${Installed-Size}\t${Package}\n'
+fi
 
 if command -v gvfs-open &>/dev/null; then
 	alias open=gvfs-open

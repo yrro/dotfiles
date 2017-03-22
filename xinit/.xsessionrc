@@ -31,7 +31,14 @@ if test "$DESKTOP_SESSION" = i3; then
 fi
 
 if test "$DESKTOP_SESSION" = gnome-i3; then
-	xset s off
+	#xset s off
+	xset -dpms
+	setxkbmap -option compose:rwin # no part of gnome-i3 sets it :/
+
+	echo 'HELLO123'
+	xset q
+	setxkbmap -query
+	echo 'DONE123'
 fi
 
 # vim: ft=sh
