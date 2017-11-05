@@ -17,8 +17,6 @@ shopt -s histappend
 shopt -s histverify
 shopt -s no_empty_cmd_completion
 
-export DJANGO_COLORS="light"
-
 case $(systemd-detect-virt) in
 oracle)
 	;;
