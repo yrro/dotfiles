@@ -180,10 +180,6 @@ function debskew {
 		| xargs -r dpkg -l
 }
 
-function rb {
-	env $(envof $(pgrep rhythmbox) | grep ^DBUS_SESSION_BUS_ADDRESS=) rhythmbox-client "$@"
-}
-
 function exaudio {
 	ffmpeg -i "$1" -acodec copy -vn "$2"
 }
