@@ -53,7 +53,7 @@ function colorfgbg {
 	# XXX why isn't vim taking this from the terminal directly?
 	stty -echo
 	echo -ne '\e]10;?\a'
-	IFS=: read -t 0.1 -d $'\a' x fg
+	IFS=: read -r -t 0.1 -d $'\a' x fg
 	#echo -ne '\e]11;?\a'
 	#IFS=: read -t 0.1 -d $'\a' x bg
 	if [[ ${fg:0:1} =~ [01234567] ]]; then
@@ -108,10 +108,10 @@ GIT_PS1_SHOWUNTRACKEDFILES=1
 GIT_PS1_SHOWUPSTREAM=verbose
 function __java_ps1 {
 	local flag varval crap
-	declare -x | while read declare flag varval crap; do
+	declare -x | while read -r declare flag varval crap; do
 		if [[ $varval =~ ^JAVA_HOME= ]]; then
 			local jh
-			IFS=/ read -a jh <<< "$JAVA_HOME"
+			IFS=/ read -r -a jh <<< "$JAVA_HOME"
 			printf 'J=%s' "${jh[-1]}"
 			break
 		fi
