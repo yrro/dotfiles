@@ -139,4 +139,7 @@ if has('packages')
     packadd! matchit
 endif
 
+let g:xml_syntax_folding = 1
+au FileType xml setlocal fdm=syntax
+
 " vim: ts=8 sts=4 sw=4 et 
