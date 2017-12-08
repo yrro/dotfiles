@@ -2,4 +2,4 @@
 
 set -eu
 
-exec stow -t ~ *
+exec stow -t ~ */
