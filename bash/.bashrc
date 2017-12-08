@@ -119,11 +119,15 @@ function __java_ps1 {
 }
 function __systemd_ps1 {
 	local s
-	s=$(systemctl is-system-running)
+	if ! s=$(systemctl is-system-running 2>/dev/null); then
+		s=?
+	fi
 	if [[ $s != running ]]; then
 		printf '%s%s%s ' "${_csi_purple}" "$s" "${_csi_default}"
 	fi
-	s=$(systemctl --user is-system-running)
+	if ! s=$(systemctl --user is-system-running 2>/dev/null); then
+		s=?
+	fi
 	if [[ $s != running ]]; then
 		printf '%s%s%s ' "${_csi_purple}" "user:$s" "${_csi_default}"
 	fi
