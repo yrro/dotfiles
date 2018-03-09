@@ -1,6 +1,9 @@
 # This is sourced by .xsessionrc, which is processed by /bin/sh (e.g., dash).
 # So, even though this is Bash's profile, we can't use Bash-only constructs!
 
+# OR IS IT? With gnome-session, $SHELL is used:
+# <https://git.gnome.org/browse/gnome-session/commit/?id=7e307f8ddb91db5d4051c4c792519a660ba67f35>
+
 # <http://lists.gnu.org/archive/html/bug-bash/2005-01/msg00263.html> is a good
 # explanation of this insanity. Also <http://lkml.org/lkml/2005/4/25/205>.
 
