@@ -279,7 +279,9 @@ if ! command -v dpigs >/dev/null; then
 	alias dpigs=$'dpkg-query -W -f \'${Installed-Size}\t${Package}\n'
 fi
 
-if command -v gvfs-open &>/dev/null; then
+if command -v gio &> /dev/null; then
+	alias open='gio open'
+elif command -v gvfs-open &>/dev/null; then
 	alias open=gvfs-open
 fi
 
