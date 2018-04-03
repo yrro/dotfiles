@@ -47,8 +47,8 @@ set hlsearch
 " always display status line
 set laststatus=2
 
-" highlight current line
-set cursorline
+" highlight current line (slow in Vim 8)
+"set cursorline
 
 " emulate default status line; add git branch info
 set statusline=%<%f\ %{exists('g:loaded_fugitive')?fugitive#statusline():''}\ %h%m%r%=%-14.(%l,%c%V%)\ %P
