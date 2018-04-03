@@ -41,6 +41,9 @@ fi
 MALLOC_PERTURB_=$(od -A n -t u -N 1 /dev/urandom)
 export MALLOC_PERTURB_
 
+export ANSIBLE_NOCOWS=1
+export ANSIBLE_COW_SELECTION=random
+
 # Source .bashrc if this is an interactive shell
 case $- in
 *i*)
