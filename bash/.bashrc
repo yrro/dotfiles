@@ -26,14 +26,6 @@ oracle)
 esac
 export EDITOR=vim
 
-if test -n "$DISPLAY"
-then
-	BROWSER=chromium
-else
-	BROWSER=www-browser
-fi
-export BROWSER
-
 command -v lesspipe > /dev/null && eval "$(lesspipe)"
 # https://en.wikipedia.org/wiki/ANSI_escape_code
 export LESS_TERMCAP_mb=$'\e[1;31m' # mode blink
