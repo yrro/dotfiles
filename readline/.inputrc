@@ -9,3 +9,5 @@ set bell-style none
 set blink-matching-paren on
 #set horizontal-scroll-mode on
 #set show-all-if-ambiguous on
+
+set enable-bracketed-paste on
