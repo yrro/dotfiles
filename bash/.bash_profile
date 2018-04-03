@@ -33,11 +33,6 @@ traxus)
 	;;
 esac
 
-if test -n "$SSH_AUTH_SOCK" && -n "$TMUX" && ! -L "$SSH_AUTH_SOCK"; then
-	ln -sfr  "$SSH_AUTH_SOCK" "$TMUX.ssh"
-	SSH_AUTH_SOCK="$TMUX.ssh"
-fi
-
 MALLOC_PERTURB_=$(od -A n -t u -N 1 /dev/urandom)
 export MALLOC_PERTURB_
 
