@@ -73,7 +73,7 @@ if has ("win32")
 elseif has ("mac")
     set guifont=Menlo\ Regular:h12
 else
-    set guifont=Monospace\ 9
+    set guifont=Monospace\ 10
 endif
 
 set guicursor+=a:blinkon0
