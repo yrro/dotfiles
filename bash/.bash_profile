@@ -9,7 +9,7 @@
 
 export DEBEMAIL=sam@robots.org.uk
 export DEBNAME='Sam Morris'
-export PATH=$PATH:$HOME/bin:$HOME/.local/bin
+export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
 test -f ~/.pythonrc && export PYTHONSTARTUP=$HOME/.pythonrc
 
