@@ -207,8 +207,10 @@ function wcl-delta {
 }
 
 function cheap-dpigs {
-	limit=${1:-10}
-	dpkg-query --show --showformat '${Package} ${Installed-Size}\n' | sort -r -n -k 2 | head -n "${limit}" | column -t
+	dpkg-query -W -f '${Installed-Size}\t${Package}\n' \
+		| sort -k 1nr,1 \
+		| numfmt --field=1 --from-unit=1Ki --to=iec-i \
+		| column -t
 }
 
 alias aptwhy='apt rdepends --no-conflicts --no-breaks --no-replaces --no-enhances'
@@ -263,8 +265,10 @@ function ps-user {
 	ps -u "$1" -o pid,nlwp,cmd f
 }
 
-if ! command -v dpigs >/dev/null; then
-	alias dpigs=$'dpkg-query -W -f \'${Installed-Size}\t${Package}\n'
+if command -v dpigs >/dev/null; then
+	alias dpigs='dpigs -H'
+else
+	alias dpigs=cheap-dpigs
 fi
 
 if command -v gio &> /dev/null; then
