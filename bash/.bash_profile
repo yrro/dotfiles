@@ -39,7 +39,7 @@ export MALLOC_PERTURB_
 export ANSIBLE_NOCOWS=1
 export ANSIBLE_COW_SELECTION=random
 
-export LESS=Rq
+export LESS=FRXq
 
 # Source .bashrc if this is an interactive shell
 case $- in
