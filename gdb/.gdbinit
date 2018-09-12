@@ -17,4 +17,9 @@ if os.path.exists ('/home/sam/src/gdb/boost'):
 	sys.path.insert (0, '/home/sam/src/gdb/boost')
 	from boost_printers import register_boost_printers
 	register_boost_printers (None)
+if os.path.exists('/usr/share/glib-2.0/gdb'):
+	sys.path.insert(0, '/usr/share/glib-2.0/gdb')
+	import glib_gdb, gobject_gdb
+	glib_gdb.register(None)
+	gobject_gdb.register(None)
 end
