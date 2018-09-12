@@ -97,7 +97,7 @@ GIT_PS1_SHOWSTASHSTATE=1
 GIT_PS1_SHOWUNTRACKEDFILES=1
 GIT_PS1_SHOWUPSTREAM=verbose
 function __java_ps1 {
-	local flag varval crap
+	local declare flag varval crap
 	declare -x | while read -r declare flag varval crap; do
 		if [[ $varval =~ ^JAVA_HOME= ]]; then
 			local jh
