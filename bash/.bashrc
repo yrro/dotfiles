@@ -121,8 +121,10 @@ function __systemd_ps1 {
 
 PS1="\n\$(smile) ${_csi_cyan}\\A \$(user_colour)\\u@\\h \$(__systemd_ps1)${_csi_gold}\\w${_csi_default} \$(__git_ps1 '(%s) ')\$(__java_ps1)\n\\$ "
 
-HISTCONTROL=ignoreboth
-HISTSIZE=5000
+HISTCONTROL=ignorespace:ignoredups:erasedups
+HISTSIZE=100000
+#HISTFILESIZE=100000
+shopt -s histappend
 
 # xterm/screen title
 #
