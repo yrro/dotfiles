@@ -290,14 +290,5 @@ if test -z "$CLICOLOR"; then
 	}
 fi
 
-case $HOSTNAME in
-durandal)
-	alias nogba='wine ~/nogba/NO\$GBA.EXE'
-	;;
-lysander)
-	alias vim='c:\\Program\ Files\ \(x86\)\\vim\\vim73\\vim.exe'
-	alias gvim='c:\\Program\ Files\ \(x86\)\\vim\\vim73\\gvim.exe'
-	;;
-esac
 
 etckeeper_check
