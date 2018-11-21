@@ -39,7 +39,9 @@ export MALLOC_PERTURB_
 export ANSIBLE_NOCOWS=1
 export ANSIBLE_COW_SELECTION=random
 
-export LESS=FRXq
+# X breaks the mouse. Without X, F makes it impossible to read short documents.
+# This overwrites Git's default of FRX.
+export LESS=Rq
 
 # Source .bashrc if this is an interactive shell
 case $- in
