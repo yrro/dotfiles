@@ -286,9 +286,83 @@ if test -z "$CLICOLOR"; then
 
 	function cgrep {
 		pattern="$1"; shift
-		grep "^\|$pattern" "$@"
+		grep "^\\|$pattern" "$@"
 	}
 fi
 
+function hibp {
+	local hash noise count
+	read -p 'Password: ' -rs pass
+	read -r hash noise < <(echo -n "$pass" | sha1sum - | tr 'a-z' 'A-Z')
+	count=
+	IFS=: read -r noise count < <(curl -sSL "https://api.pwnedpasswords.com/range/${hash:0:5}" | grep "^${hash:5}:")
+	#IFS=: read -r noise count < <(curl -sSL "https://api.pwnedpasswords.com/range/${hash:0:5}" | look -b "${hash:5}:")
+	echo "${count:-0}"
+}
+
+function for-each-pem {
+	local inputs=()
+	local usage='Usage: for-each-pem file1 ... -- command -in {} other args'
+	while [[ $1 != -- ]]; do
+		if ! (($#)); then
+			echo "$usage" >&2
+			return 1
+		fi
+		inputs+=("$1")
+		shift
+	done
+	shift # --
+
+	local certs=()
+	for input in "${inputs[@]}"; do
+		while read -r line; do
+				if [[ $line = "-----BEGIN CERTIFICATE-----" ]]; then
+						local cert="$line"$'\n'
+						while read -r line2; do
+								cert+="$line2"$'\n'
+								if [[ "$line2" = "-----END CERTIFICATE-----" ]]; then
+										certs+=("$cert")
+										break
+								fi
+						done
+				fi
+		done < "$input"
+	done
+
+	for cert in "${certs[@]}"; do
+		(
+			# Name based on RFC7468 5.3
+			local cert_file
+			cert_file=$(mktemp -t for-each-pem-XXXXXXXX.crt)
+			if [[ -z "$cert_file" ]]; then
+				return 1
+			fi
+			echo -n "$cert" > "$cert_file"
+			trap "rm -f \"$cert_file\"" EXIT
+
+			local args=()
+			for c in "$@"; do
+				if [[ $c == {} ]]; then
+					args+=("$cert_file")
+				else
+					args+=("$c")
+				fi
+			done
+			if ! ((${#args[@]})); then
+				echo "$usage" >&2
+				return 2
+			fi
+			if ! "${args[@]}"; then
+				return 3
+			fi
+		)
+		local r="$?"
+		if ((r)); then return "$r"; fi
+	done
+}
+
+if command -v direnv &>/dev/null; then
+	eval "$(direnv hook bash)"
+fi
 
 etckeeper_check
