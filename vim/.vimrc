@@ -124,11 +124,11 @@ nnoremap <silent> <Leader>T :CommandTTag<CR>
 
 nnoremap <leader>G :GundoToggle<CR>
 
-set bg=dark
-if &t_Co == 256 || has('gui_running') && !empty(globpath(&rtp, 'colors/xoria256.vim'))
+" vim 7 uses COLORFGBG to set bg automatically
+if (&t_Co == 256 || has('gui_running')) && !empty(globpath(&rtp, 'colors/xoria256.vim'))
     colorscheme xoria256
 else
-    "colorscheme anotherdark
+    colorscheme anotherdark
 endif
 
 set breakindent
