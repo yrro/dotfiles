@@ -125,9 +125,9 @@ nnoremap <silent> <Leader>T :CommandTTag<CR>
 nnoremap <leader>G :GundoToggle<CR>
 
 " vim 7 uses COLORFGBG to set bg automatically
-if (&t_Co == 256 || has('gui_running')) && !empty(globpath(&rtp, 'colors/xoria256.vim'))
+if !empty(globpath(&rtp, 'colors/xoria256.vim')) && (&t_Co == 256 || has('gui_running'))
     colorscheme xoria256
-else
+elseif !empty(globpath(&rtp, 'colors/anotherdark.vim'))
     colorscheme anotherdark
 endif
 
