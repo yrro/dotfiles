@@ -225,10 +225,13 @@ alias dquilt='QUILT_PATCHES=debian/patches QUILT_NO_DIFF_INDEX=1 QUILT_NO_DIFF_T
 alias dux='du -xm --max-depth=1'
 alias e="$EDITOR"
 alias g=git
+alias gbp-buildpackage-cow="gbp buildpackage --git-pbuilder --git-pbuilder-options='--hookdir $HOME/.pbuilder-hooks'"
 alias gdb='gdb -silent'
 alias gnutls-cli="gnutls-cli --x509cafile /etc/ssl/certs/ca-certificates.crt"
 alias grpe=grep
 alias ip='ip -c'
+alias ipa='ip -br addr show'
+alias ipl='ip -br link show'
 alias j=journalctl
 alias journalctl='journalctl --no-hostname'
 alias la='ls -A'
