@@ -291,6 +291,7 @@ fi
 
 if test -z "$CLICOLOR"; then
 	alias grep='grep --color=auto'
+	alias dgrep='dgrep --color=auto'
 	alias ls='ls --color=auto --hyperlink=auto'
 
 	function cgrep {
