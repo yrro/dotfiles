@@ -110,11 +110,11 @@ function __java_ps1 {
 }
 function __systemd_ps1 {
 	local s
-	s=$(systemctl is-system-running 2>/dev/null)
+	s=$(timeout 1 systemctl is-system-running 2>/dev/null)
 	if [[ $s != running ]]; then
 		printf '%s%s%s ' "${_csi_purple}" "system:${s:-?}" "${_csi_default}"
 	fi
-	s=$(systemctl --user is-system-running 2>/dev/null)
+	s=$(timeout 1 systemctl --user is-system-running 2>/dev/null)
 	if [[ $s != running ]]; then
 		printf '%s%s%s ' "${_csi_purple}" "user:${s:-?}" "${_csi_default}"
 	fi
@@ -183,7 +183,7 @@ function winbreak {
 
 function etckeeper_check {
 	if command -v sudo >/dev/null 2>&1 && command -v etckeeper >/dev/null 2>&1; then
-		if sudo -n etckeeper unclean; then
+		if timeout 1 sudo -n etckeeper unclean; then
 			echo 'etckeeper has uncommitted changes.'
 		fi
 	fi
