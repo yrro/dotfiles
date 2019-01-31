@@ -215,6 +215,11 @@ function cheap-dpigs {
 		| column -t
 }
 
+function git {
+	unset LESS
+	command git "$@"
+}
+
 alias aptwhy='apt rdepends --no-conflicts --no-breaks --no-replaces --no-enhances'
 alias aptwhyi='aptwhy --installed'
 alias bc='bc -q'
