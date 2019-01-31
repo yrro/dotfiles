@@ -16,6 +16,7 @@ shopt -s globstar
 shopt -s histappend
 shopt -s histverify
 shopt -s no_empty_cmd_completion
+shopt -s failglob
 
 case $(systemd-detect-virt) in
 oracle)
