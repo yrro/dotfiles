@@ -8,18 +8,30 @@ set print pretty on
 set print vtbl on
 
 python
-import os, sys
-if os.path.exists ('/home/sam/src/gdb/python'):
-	sys.path.insert (0, '/home/sam/src/gdb/python')
+import sys
+
+sys.path.insert(0, '/usr/share/gcc-8/python')
+try:
 	from libstdcxx.v6.printers import register_libstdcxx_printers
+except ImportError:
+	pass
+else:
 	register_libstdcxx_printers (None)
-if os.path.exists ('/home/sam/src/gdb/boost'):
-	sys.path.insert (0, '/home/sam/src/gdb/boost')
+
+sys.path.insert (0, '/home/sam/src/gdb/boost')
+try:
 	from boost_printers import register_boost_printers
+except ImportError:
+	pass
+else:
 	register_boost_printers (None)
-if os.path.exists('/usr/share/glib-2.0/gdb'):
-	sys.path.insert(0, '/usr/share/glib-2.0/gdb')
+
+sys.path.insert(0, '/usr/share/glib-2.0/gdb')
+try:
 	import glib_gdb, gobject_gdb
+except ImportError:
+	pass
+else:
 	glib_gdb.register(None)
 	gobject_gdb.register(None)
 end
