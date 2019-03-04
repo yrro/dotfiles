@@ -1,3 +1,8 @@
+from pprint import pprint
+import pdb
+import os
+import sys
+
 try:
     import readline
 except ImportError:
@@ -5,3 +10,8 @@ except ImportError:
 else:
     import rlcompleter
     readline.parse_and_bind ('tab: complete')
+
+try:
+    import ipdb
+except ImportError:
+    pass
