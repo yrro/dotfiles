@@ -233,7 +233,7 @@ alias e="$EDITOR"
 alias g=git
 alias gbp-buildpackage-cow="gbp buildpackage --git-pbuilder --git-pbuilder-options='--hookdir $HOME/.pbuilder-hooks'"
 alias gdb='gdb -silent'
-alias gnutls-cli="gnutls-cli --x509cafile /etc/ssl/certs/ca-certificates.crt"
+alias gnutls-cli-verify="gnutls-cli --x509cafile /etc/ssl/certs/ca-certificates.crt"
 alias grpe=grep
 alias ip='ip -c'
 alias ipa='ip -br addr show'
@@ -253,7 +253,7 @@ alias psc3='ps -o pid,user,nlwp,unit,args -e --forest'
 alias py3='ipython3'
 alias rsync='rsync -h'
 alias s=systemctl
-alias s_client='openssl s_client -verify 20 -verify_return_error'
+alias s_client-verify='openssl s_client -verify 20 -verify_return_error'
 alias sndtest1='pasuspender -- aplay -D plughw:CARD=I82801AAICH,DEV=0 /usr/share/sounds/alsa/Front_Left.wav'
 alias tar='tar --force-local'
 alias units='units --verbose'
