@@ -129,6 +129,8 @@ if !empty(globpath(&rtp, 'colors/xoria256.vim')) && (&t_Co == 256 || has('gui_ru
     colorscheme xoria256
 elseif !empty(globpath(&rtp, 'colors/anotherdark.vim'))
     colorscheme anotherdark
+else
+    colorscheme slate
 endif
 
 set breakindent
