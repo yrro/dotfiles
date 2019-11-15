@@ -146,4 +146,4 @@ au FileType xml setlocal fdm=syntax
 
 nnoremap <leader>l :ls<CR>:b<space>
 
-" vim: ts=8 sts=4 sw=4 et 
+" vim: ts=8 sts=4 sw=4 et
