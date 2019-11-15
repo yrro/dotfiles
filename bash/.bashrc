@@ -243,6 +243,7 @@ alias j=journalctl
 alias journalctl='journalctl --no-hostname'
 alias la='ls -A'
 alias ll='ls -lh'
+alias lsacpi=$'(for x in /sys/bus/acpi/devices/*; do if [[ -e "$x/path" ]]; then path=$(<"$x/path"); else path=\'?\'; fi; printf \'%s %s\n\' "$path" "$(readlink -e "$x")"; done | sort -k 1,1 | column -t)'
 alias massif='valgrind --tool=massif --depth=5 --alloc-fn={g_malloc,g_realloc,g_try_malloc,g_malloc0,g_mem_chunk_alloc}'
 alias mysql='mysql --pager --sigint-ignore'
 alias odh='od -A x -t x1z'
