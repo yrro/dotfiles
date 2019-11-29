@@ -224,7 +224,7 @@ function git {
 function trust-check {
 	local crt skid p11id
 	for crt in "$@"; do
-		skid=$(openssl x509 -in "$crt" -noout -text | sed -n '/X509v3 Subject Key Identifier:/{n;p;}')
+		skid=$(openssl x509 -in "$crt" -noout -ext subjectKeyIdentifier | tail -n +2)
 		p11id=$(<<< "$skid" tr -d '[:space:]:' | sed -e 's/../%\U&/g')
 		trust list | grep -A 4 "^pkcs11:id=$p11id;type=cert"
 	done
