@@ -245,6 +245,7 @@ alias gbp-buildpackage-cow="gbp buildpackage --git-pbuilder --git-pbuilder-optio
 alias gdb='gdb -silent'
 alias gnutls-cli-verify="gnutls-cli --x509cafile /etc/ssl/certs/ca-certificates.crt"
 alias grpe=grep
+alias ffprobe='ffprobe -hide_banner'
 alias ip='ip -c'
 alias ipa='ip -br addr show'
 alias ipl='ip -br link show'
