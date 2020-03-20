@@ -54,7 +54,7 @@ function colorfgbg {
 	fi
 	stty echo
 }
-colorfgbg
+#colorfgbg
 
 command -v dircolors >/dev/null && eval "$(dircolors -b)"
 
