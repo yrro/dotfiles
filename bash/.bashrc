@@ -90,7 +90,9 @@ _csi_green=$'\e[32m'
 _csi_red=$'\e[91m'
 _csi_gold=$'\e[33m'
 _csi_purple=$'\e[38;5;141m'
-if ! type -t __git_ps1 > /dev/null; then
+if [[ -e /usr/lib/git-core/git-sh-prompt ]]; then
+	source /usr/lib/git-core/git-sh-prompt
+else
 	function __git_ps1 { :; }
 fi
 GIT_PS1_SHOWDIRTYSTATE=1
