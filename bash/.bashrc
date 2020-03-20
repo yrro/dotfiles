@@ -98,7 +98,7 @@ fi
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWSTASHSTATE=1
 GIT_PS1_SHOWUNTRACKEDFILES=1
-GIT_PS1_SHOWUPSTREAM=verbose
+GIT_PS1_SHOWUPSTREAM='verbose name'
 function __java_ps1 {
 	local declare flag varval crap
 	#declare -x | while read -r declare flag varval crap; do
