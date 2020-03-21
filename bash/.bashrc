@@ -100,15 +100,9 @@ GIT_PS1_SHOWSTASHSTATE=1
 GIT_PS1_SHOWUNTRACKEDFILES=1
 GIT_PS1_SHOWUPSTREAM='verbose name'
 function __java_ps1 {
-	local declare flag varval crap
-	#declare -x | while read -r declare flag varval crap; do
-	#	if [[ $varval =~ ^JAVA_HOME= ]]; then
-	#		local jh
-	#		IFS=/ read -r -a jh <<< "$JAVA_HOME"
-	#		printf 'J=%s' "${jh[-1]}"
-	#		break
-	#	fi
-	#done
+	if [[ -n $JAVA_HOME ]]; then
+		printf 'J=%s' "${JAVA_HOME##*/}"
+	fi
 }
 function __systemd_ps1 {
 	local s
