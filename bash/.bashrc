@@ -3,7 +3,7 @@
 # For some reason, openssh invokes bash as an interactive shell even if we
 # are only using scp. Therefore check that we have a terminal before processing
 # this file
-if test -n "$SSH_CONNECTION" && ! tty -s; then
+if [[ -n $SSH_CONNECTION ]] && !tty -s; then
 	return
 fi
 
