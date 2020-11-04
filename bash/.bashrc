@@ -397,6 +397,48 @@ function for-each-pem {
 	done
 }
 
+function oc-events {
+	{
+		echo $'TIME\tNAMESPACE\tTYPE\tREASON\tOBJECT\tSOURCE\tMESSAGE';
+		oc get events -o json "$@" \
+			| jq -r  '.items | map(. + {t: (.eventTime//.lastTimestamp)}) | sort_by(.t)[] | [.t[0:19], .metadata.namespace, .type, .reason, .involvedObject.kind + "/" + .involvedObject.name, .source.component + (if .source.host then "," + .source.host else "" end), .message] | @tsv';
+	} \
+		| column -s $'\t' -t \
+		| less -SF
+}
+
+function oc-es-exec {
+	es_pod="$(oc -n openshift-logging get pod -l component=elasticsearch -o name --field-selector=status.phase=Running | shuf -n1)"
+	if [[ -z "$es_pod" ]]; then
+		echo 'No running elasticsearch pods found' >&2
+		oc -n openshift-logging get pod -l component=elasticsearch
+		return 1
+	fi
+	oc -n openshift-logging \
+		exec -c elasticsearch "$es_pod" \
+			-- "$@"
+}
+
+function oc-machine-ips {
+	{
+		echo $'MACHINE\tTYPE\tROLE\tINSTANCE-TYPE\tREGION\tZONE\tADDRESS';
+		oc get -o json machine -n openshift-machine-api \
+			| jq -r '.items[] | [.metadata.name, .metadata.labels["machine.openshift.io/cluster-api-machine-type"], .metadata.labels["machine.openshift.io/cluster-api-machine-role"], .metadata.labels["machine.openshift.io/instance-type"], .metadata.labels["machine.openshift.io/region"], .metadata.labels["machine.openshift.io/zone"], (.status.addresses[] | select(.type=="InternalIP") | .address) ] | @tsv';
+	} \
+		| column -s $'\t' -t \
+		| less -SF
+}
+
+function oc-scc-access {
+	{
+		echo $'NAME\tPRIORITY\tUSERS\tGROUPS';
+		oc get scc -o json \
+			| jq -r '.items[] | [.metadata.name, .priority//0, (.users|join(",")), (.groups|join(","))] | @tsv'
+	} \
+		| column -s $'\t' -t \
+		| less -SF
+}
+
 if command -v direnv &>/dev/null; then
 	eval "$(direnv hook bash)"
 fi
