@@ -279,8 +279,28 @@ function docker-rmi-dangling {
 	[[ ${#images[@]} -eq 0 ]] || docker rmi "${images[@]}"
 }
 
+function pheldapvi {
+	local servers=($(dig -t SRV _ldap._tcp.gc._msdcs.phe.gov.uk +short | cut -d' ' -f4 | sed -e 's,^,ldap://,' -e 's/\.$//'))
+	if [[ ${#servers[@]} -eq 0 ]]; then
+		echo 'DNS failure?' >&2
+		return 1
+	fi
+	ldapvi -Q -Y GSSAPI -h $(IFS=,; echo "${servers[*]}") "$@"
+}
+
 function ps-user {
 	ps -u "$1" -o pid,nlwp,cmd f
+}
+
+function srv {
+	busctl -j call \
+		org.freedesktop.resolve1 \
+		/org/freedesktop/resolve1 \
+		org.freedesktop.resolve1.Manager \
+		ResolveService \
+		isssit \
+		0 '' '' "$1" 0 129 \
+	| jq -c '.data[0][]'
 }
 
 if command -v dpigs >/dev/null; then
