@@ -148,4 +148,7 @@ nnoremap <leader>l :ls<CR>:b<space>
 
 autocmd BufNewFile,BufRead *-MIB.txt,*-mib.txt,*-MIB,*-mib set ft=mib
 
+autocmd BufNewFile,BufReadPost *.yaml,*.yml set ft=yaml
+autocmd FileType yaml setlocal expandtab fdm=indent
+
 " vim: ts=8 sts=4 sw=4 et
