@@ -116,6 +116,11 @@ function __systemd_ps1 {
 	fi
 }
 
+function s_client-verify {
+	local hostname="${1%:*}"
+	openssl s_client -showcerts -verify 20 -verify_return_error -verify_hostname "$hostname" -connect "$1"
+}
+
 PS1="\n\$(smile) ${_csi_cyan}\\A \$(user_colour)\\u@\\h \$(__systemd_ps1)${_csi_gold}\\w${_csi_default} \$(__git_ps1 '(%s) ')\$(__java_ps1)\n\\$ "
 
 HISTCONTROL=ignorespace:ignoredups:erasedups
@@ -259,7 +264,6 @@ alias psc3='ps -o pid,user,nlwp,unit,args -e --forest'
 alias py3='ipython3'
 alias rsync='rsync -h'
 alias s=systemctl
-alias s_client-verify='openssl s_client -showcerts -verify 20 -verify_return_error'
 alias sndtest1='pasuspender -- aplay -D plughw:CARD=I82801AAICH,DEV=0 /usr/share/sounds/alsa/Front_Left.wav'
 alias tar='tar --force-local'
 alias units='units --verbose'
