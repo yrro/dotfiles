@@ -456,6 +456,9 @@ function oc-csvs {
 		| less -SF
 }
 
+alias xc='xclip -selection clipboard -in'
+alias xp='xclip -selection clipboard -out'
+
 if command -v direnv &>/dev/null; then
 	eval "$(direnv hook bash)"
 fi
