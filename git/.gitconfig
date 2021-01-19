@@ -1,0 +1,17 @@
+[user]
+	email = sam@robots.org.uk
+	name = Sam Morris
+
+[alias]
+	ff = merge --ff-only
+
+[pull]
+	ff = only
+
+[credential]
+	helper = cache
+
+[credential "https://github.com"]
+	username = yrro
+[credential "https://salsa.debian.org"]
+	username = yrro-guest
