@@ -466,3 +466,5 @@ fi
 command -v direnv >/dev/null 2>&1 && eval "$(direnv hook bash)"
 
 etckeeper_check
+
+# vim: ts=2 sts=2 sw=2 noet
