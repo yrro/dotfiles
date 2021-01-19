@@ -233,6 +233,7 @@ function trust-check {
 
 alias aptwhy='apt rdepends --no-conflicts --no-breaks --no-replaces --no-enhances'
 alias aptwhyi='aptwhy --installed'
+alias bridge='/sbin/bridge -c=auto'
 alias bc='bc -q'
 alias dig='dig +multi'
 alias dnf='sudo dnf'
@@ -247,7 +248,7 @@ alias gdb='gdb -silent'
 alias gnutls-cli-verify="gnutls-cli --x509cafile /etc/ssl/certs/ca-certificates.crt"
 alias grpe=grep
 alias ffprobe='ffprobe -hide_banner'
-alias ip='ip -br -c'
+alias ip='ip -br -c=auto -h'
 alias j=journalctl
 alias journalctl='journalctl --no-hostname'
 alias la='ls -A'
