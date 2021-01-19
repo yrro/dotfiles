@@ -286,13 +286,28 @@ function docker-rmi-dangling {
 	[[ ${#images[@]} -eq 0 ]] || docker rmi "${images[@]}"
 }
 
-function pheldapvi {
-	local servers=($(dig -t SRV _ldap._tcp.gc._msdcs.phe.gov.uk +short | cut -d' ' -f4 | sed -e 's,^,ldap://,' -e 's/\.$//'))
-	if [[ ${#servers[@]} -eq 0 ]]; then
-		echo 'DNS failure?' >&2
-		return 1
-	fi
-	ldapvi -Q -Y GSSAPI -h $(IFS=,; echo "${servers[*]}") "$@"
+function srv {
+	busctl -j call org.freedesktop.resolve1 /org/freedesktop/resolve1 org.freedesktop.resolve1.Manager ResolveService isssit \
+		0 '' '' "$1" 0 129 \
+		| jq -c '.data[0][]'
+}
+
+function adsearch {
+	local domain="$1"; shift
+	local service="$1"; shift
+	local site="${1:-}"; shift
+	if [[ -n $site ]]; then site=".$site._sites"; fi
+	local servers=$(srv "_ldap._tcp$site.$service._msdcs.$domain" | jq -r -s 'map("ldap://\(.[3]):\(.[2])") | join(",")')
+	ldapsearch -o ldif-wrap=no -E pr=2000/noprompt -LLL -Q -Y GSSAPI \
+		-H "${servers}" \
+		"$@"
+}
+
+function adldapvi {
+	local domain="$1"; shift
+	local service="$1"; shift
+	local servers=$(srv "_ldap._tcp.$service._msdcs.$domain" | jq -r -s 'map("ldap://\(.[3]):\(.[2])") | join(",")')
+	ldapvi -Q -Y GSSAPI -h "$servers" "$@"
 }
 
 function ps-user {
