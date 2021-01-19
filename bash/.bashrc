@@ -252,6 +252,7 @@ alias gnutls-cli-verify="gnutls-cli --x509cafile /etc/ssl/certs/ca-certificates.
 alias grpe=grep
 alias ffprobe='ffprobe -hide_banner'
 alias ip='ip -br -c=auto -h'
+alias ipcalc='ipcalc --nobinary'
 alias j=journalctl
 alias journalctl='journalctl --no-hostname'
 alias la='ls -A'
