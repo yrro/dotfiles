@@ -275,8 +275,6 @@ alias units='units --verbose'
 alias watch='watch -c'
 alias wgoat='wget'
 alias whois='whois -H'
-alias xc='xclip -selection clipboard -in'
-alias xp='xclip -selection clipboard -out'
 alias xse='tail --follow=name ~/.xsession-errors -n 0'
 
 function docker-ip {
@@ -443,6 +441,16 @@ function oc-scc-access {
 		echo $'NAME\tPRIORITY\tUSERS\tGROUPS';
 		oc get scc -o json \
 			| jq -r '.items[] | [.metadata.name, .priority//0, (.users|join(",")), (.groups|join(","))] | @tsv'
+	} \
+		| column -s $'\t' -t \
+		| less -SF
+}
+
+function oc-csvs {
+	{
+		echo $'NAMESPACE\tNAME\tDISPLAY\tVERSION\tPHASE\tTARGET NAMESPACES';
+		oc get -A csv -o json \
+			| jq -r '.items[] | select(.status.reason != "Copied") | [.metadata.namespace, .metadata.name, .spec.displayName, .spec.version, .status.phase, if .metadata.annotations["olm.targetNamespaces"] != "" then .metadata.annotations["olm.targetNamespaces"] else "\u2200" end] | @tsv';
 	} \
 		| column -s $'\t' -t \
 		| less -SF
